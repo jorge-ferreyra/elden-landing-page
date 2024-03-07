@@ -1,0 +1,42 @@
+---
+
+---
+
+<script>
+  let navBarOpen = false
+  const navbar = document.getElementById('navbar')
+  const buttonNav = document.getElementById('button-nav')
+  const spanButton = document.getElementById('span-button')
+  const iconLeft = document.getElementById('icon-left')
+  const iconRight = document.getElementById('icon-right')
+
+  buttonNav.addEventListener('click', () => {
+    if(!navBarOpen) {
+      navbar.style.translate = '300px 0'
+      spanButton.style.translate = '20px 0'
+      iconRight.style.translate = '20px 0'
+      iconRight.style.opacity = 0
+      iconLeft.style.translate = '20px 0'
+      iconLeft.style.opacity = 1
+
+      navBarOpen = true
+    } else {
+      navbar.style.translate = '0 0'
+      spanButton.style.translate = '0 0'
+      iconLeft.style.translate = '0 0'
+      iconLeft.style.opacity = 0
+      iconRight.style.translate = '0 0'
+      iconRight.style.opacity = 1
+      
+
+      navBarOpen = false
+    }
+    
+  })
+</script>
+
+<a id="button-nav" class="w-[150px] flex items-center justify-center gap-[10px] cursor-pointer">
+  <img id="icon-left" class="translate-x-[-20px] opacity-0 transition-all duration-500 ease-out" src="square-rounded-chevron-left.svg" alt="">
+  <slot />
+  <img id="icon-right" class="translate-x-[-20px] transition-all duration-500 ease-out" src="square-rounded-chevron-right.svg" alt="">
+</a>

@@ -10,24 +10,29 @@
   const iconLeft = document.getElementById('icon-left')
   const iconRight = document.getElementById('icon-right')
 
+  const main = document.getElementById('main-section')
+
   buttonNav.addEventListener('click', () => {
     if(!navBarOpen) {
       navbar.style.translate = '300px 0'
       spanButton.style.translate = '20px 0'
       iconRight.style.translate = '20px 0'
-      iconRight.style.opacity = 0
+      iconRight.style.opacity = '0'
       iconLeft.style.translate = '20px 0'
-      iconLeft.style.opacity = 1
+      iconLeft.style.opacity = '1'
+
+      main.style.paddingLeft = '400px'
 
       navBarOpen = true
     } else {
       navbar.style.translate = '0 0'
       spanButton.style.translate = '0 0'
       iconLeft.style.translate = '0 0'
-      iconLeft.style.opacity = 0
+      iconLeft.style.opacity = '0'
       iconRight.style.translate = '0 0'
-      iconRight.style.opacity = 1
+      iconRight.style.opacity = '1'
       
+      main.style.paddingLeft = '100px'
 
       navBarOpen = false
     }

@@ -3,10 +3,14 @@ import Layout from '../layouts/Layout.astro'
 import TopMenu from '../components/TopMenu.astro'
 import NavBar from '../components/NavBar.astro'
 import FirstSection from '../components/index/FirstSection.astro'
+import SecondSecton from '../components/index/SecondSection.astro'
 ---
 
 <Layout title="Elden Ring API - Inicio">
   <NavBar />
   <TopMenu />
-  <FirstSection />
+  <section id="main-section" class="w-full h-[2300px] p-[100px] flex flex-col gap-[40px] items-center">
+    <FirstSection />
+    <SecondSecton />
+  </section>
 </Layout>

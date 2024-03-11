@@ -1,5 +1,6 @@
 ---
-import JsonCard from './JsonCard.astro'
+import BasicDataCard from './BasicDataCard.astro'
+import StatsCard from './StatsCard.astro'
 ---
 
 <section class="w-full bg-[#AB966F] bg-opacity-20 border-b-[1px] border-t-[1px] border-[#91805E] flex flex-col justify-center p-[20px] pb-[30px]">
@@ -8,12 +9,28 @@ import JsonCard from './JsonCard.astro'
   </header>
   <article class="flex flex-col w-full text-white gap-[40px]">
     <p>
-      La API se puede acceder al link <span class="bg-black bg-opacity-50 p-[5px] rounded-md italic mx-[2px]">http://localhost:1234</span> 
-      y su endpoint es <span class="bg-black bg-opacity-50 p-[5px] rounded-md italic mx-[2px]">/bosses</span>. Tambien se puede acceder mediante el id con
-      <span class="bg-black bg-opacity-50 p-[5px] rounded-md italic mx-[2px]" >/bosses/:id</span> donde el id alcanza un rango de 0 a 14.
-      Cada jefe es un objeto que devuelve distinta información dependiendo del tier que le corresponda. Para empezar, los datos que tienen en comun
+      La API se puede acceder a la url <span class="bg-black bg-opacity-50 p-[5px] rounded-md italic mx-[2px] text-[#AB966F]">http://localhost:1234</span> 
+      y su endpoint es <span class="bg-black bg-opacity-50 p-[5px] rounded-md italic mx-[2px] text-[#AB966F]">/bosses</span>. Tambien se puede acceder mediante el id con
+      <span class="bg-black bg-opacity-50 p-[5px] rounded-md italic mx-[2px] text-[#AB966F]" >/bosses/:id</span> donde el id alcanza un rango de 0 a 14.
+      Cada jefe es un objeto que devuelve distintos datos dependiendo del tier que le corresponda. Para empezar, los datos que tienen en común
       entre ellos son los siguientes:
     </p>
-    <JsonCard />
+    <div class="w-full flex justify-center items-center gap-[20px]">
+      <BasicDataCard />
+      <div class="max-w-[160px] flex flex-col gap-[5px]">
+        <h2 class="text-[#AB966F] font-bold text-[20px]">Aclaracion:</h2>
+        <p>
+          "difficulty" es un valor que califica la dificultad del jefe del 1 al 10 y "dropRunes" es la cantidad de runas que gana el jugador al derrotarlo.
+        </p>
+      </div>
+    </div>
+    <p>
+      Los jefes del tier <span class="font-bold text-[#AB966F]">S, B y C</span> comprenden la misma estructura de datos ya que sus estadisticas no son modificadas aún contando con sus otras fases. Pero
+      los jefes de tier <span class="font-bold text-[#AB966F]">A</span> si tienen una estructura aparte por su modificacion de estadisticas en ambas fases. Las estadisticas en todos los jefes consiste en
+      <span class="font-bold text-[#AB966F]">Estadisticas base, Negaciones de daño y Resistencias de estado</span>:
+    </p>
+    <div class="w-full flex justify-center items-center gap-[20px]">
+      <StatsCard />
+    </div>
   </article>
 </section>

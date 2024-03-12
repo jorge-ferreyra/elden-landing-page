@@ -2,6 +2,7 @@
 import BasicDataCard from './BasicDataCard.astro'
 import StatsCard from './StatsCard.astro'
 import PhaseCard from './PhaseCard.astro'
+import type { Code, Debug } from 'astro:components'
 ---
 
 <section class="w-full bg-[#AB966F] bg-opacity-20 border-b-[1px] border-t-[1px] border-[#91805E] flex flex-col justify-center p-[20px] pb-[30px]">
@@ -36,6 +37,13 @@ import PhaseCard from './PhaseCard.astro'
       <div class="max-w-[200px]">
         <p>Para los jefes de tier <span class="font-bold text-[#AB966F]">A</span>, contienen las mismas estadisticas pero englobadas en un vector que indica la diferencia entre fases.</p>
       </div>
+    </div>
+    <div class="bg-[#AB966F] bg-opacity-20 p-[10px]">
+      <p><span class="font-bold text-[#AB966F]">* "Stance"</span> es una estadistica oculta solamente en enemigos, indica que tanto el enemigo resiste bajo ataques del jugador. Si recibe muchos golpes, se rompera su "postura" y se podra hacer un <span class="font-bold text-[#AB966F]">* <span class="underline">ataque potenciado</span></span>.</p>
+      <p><span class="font-bold text-[#AB966F]">* "Parryable"</span> esta relacinado a "parry", mecanica que consiste en bloquear un golpe enemigo justo antes de ser golpeado. Si es efectivo, se podra hacer un <span class="font-bold text-[#AB966F]">* <span class="underline">ataque potenciado</span></span></span>.</p>
+      <p><span class="font-bold text-[#AB966F]">* "Nagations"</span> contiene numeros que representan porcentajes que el jefe bloquea según los tipos de ataques del jugador. Por ejemplo, si la negación es de 60, 40% de ese daño se realizará y el 60% será negado. Valores negativos implican mayor daño y 0 continúa prácticamente como está.</p>
+      <p><span class="font-bold text-[#AB966F]">* "Resistances"</span> indican la cantidad acumulada de ciertos estados. Si una resistencia es de 100, se debe acumular 100 puntos para activar su estado. Estos disminuyen con el paso del tiempo y aumentan su nivel de acumulación cada vez producido. Los valores luego de "/" indican el aumento de resistencias luego de cada proceso sucesivo.</p>
+      <p><span class="font-bold text-[#AB966F]">* Ataque potenciado</span> Es un ataque especial que se puede realizar al hacer un parry o romper una postura enemiga causando un ataque crítico.</p>
     </div>
   </article>
 </section>

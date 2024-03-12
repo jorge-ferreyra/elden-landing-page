@@ -3,6 +3,7 @@ import BasicDataCard from './BasicDataCard.astro'
 import StatsCard from './StatsCard.astro'
 import PhaseCard from './PhaseCard.astro'
 import ExampleCard from './ExampleCard.astro'
+import ExampleCard2 from './ExampleCard2.astro'
 ---
 
 <section class="w-full bg-[#AB966F] bg-opacity-20 border-b-[1px] border-t-[1px] border-[#91805E] flex flex-col justify-center p-[20px] pb-[30px]">
@@ -45,9 +46,10 @@ import ExampleCard from './ExampleCard.astro'
       <p><span class="font-bold text-[#AB966F]">*"Resistances"</span> indican la cantidad acumulada de ciertos estados. Si una resistencia es de 100, se debe acumular 100 puntos para activar su estado. Estos disminuyen con el paso del tiempo y aumentan su nivel de acumulación cada vez producido. Los valores luego de "/" indican el aumento de resistencias luego de cada proceso sucesivo.</p>
       <p><span class="font-bold text-[#AB966F]">*Ataque potenciado</span> Es un ataque especial que se puede realizar al hacer un parry o romper una postura enemiga causando un ataque crítico.</p>
     </div>
-    <div class="w-full flex flex-col justify-center items-center gap-[20px]">
-      <button id="button-example" class="bg-[#AB966F] bg-opacity-20 rounded-md p-[10px] transition-all duration-200 ease-in hover:bg-opacity-50">Abrir Ejemplo</button>
+    <button id="button-example" class="bg-[#AB966F] bg-opacity-20 rounded-md p-[10px] transition-all duration-200 ease-in hover:bg-opacity-50">Abrir Ejemplos</button>
+    <div class="w-full flex justify-center items-center gap-[20px]">
       <ExampleCard />
+      <ExampleCard2 />
     </div>
   </article>
 </section>
@@ -56,16 +58,23 @@ import ExampleCard from './ExampleCard.astro'
   let isClose = true
   const buttonExample = document.getElementById('button-example')
   const exampleCard = document.getElementById('example-card')
+  const exampleCard2 = document.getElementById('example-card2')
   exampleCard.style.visibility = 'hidden'
   exampleCard.style.display = 'none'
+  exampleCard2.style.visibility = 'hidden'
+  exampleCard2.style.display = 'none'
   buttonExample.addEventListener('click', () => {
     if(isClose) {
       exampleCard.style.visibility = 'visible'
       exampleCard.style.display = 'block'
+      exampleCard2.style.visibility = 'visible'
+      exampleCard2.style.display = 'block'
       isClose = false
     } else {
       exampleCard.style.visibility = 'hidden'
       exampleCard.style.display = 'none'
+      exampleCard2.style.visibility = 'hidden'
+      exampleCard2.style.display = 'none'
       isClose = true
     }
   })

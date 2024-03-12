@@ -1,6 +1,7 @@
 ---
 import BasicDataCard from './BasicDataCard.astro'
 import StatsCard from './StatsCard.astro'
+import PhaseCard from './PhaseCard.astro'
 ---
 
 <section class="w-full bg-[#AB966F] bg-opacity-20 border-b-[1px] border-t-[1px] border-[#91805E] flex flex-col justify-center p-[20px] pb-[30px]">
@@ -31,6 +32,10 @@ import StatsCard from './StatsCard.astro'
     </p>
     <div class="w-full flex justify-center items-center gap-[20px]">
       <StatsCard />
+      <PhaseCard />
+      <div class="max-w-[200px]">
+        <p>Para los jefes de tier <span class="font-bold text-[#AB966F]">A</span>, contienen las mismas estadisticas pero englobadas en un vector que indica la diferencia entre fases.</p>
+      </div>
     </div>
   </article>
 </section>

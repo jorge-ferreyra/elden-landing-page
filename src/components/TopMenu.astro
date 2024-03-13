@@ -10,9 +10,47 @@ import ButtonNav from './ButtonNav.astro'
       </ButtonNav>
     </li>
     <li class="flex flex-grow justify-center items-center gap-[80px]">
-      <a class="bg-[#AB966F] bg-opacity-20 rounded-md text-[#AB966F] p-[6px] cursor-pointer hover:underline">Inicio</a>
-      <a class="bg-[#AB966F] bg-opacity-20 rounded-md text-[#AB966F] p-[6px] cursor-pointer hover:underline">Endpoint y Datos</a>
-      <a class="bg-[#AB966F] bg-opacity-20 rounded-md text-[#AB966F] p-[6px] cursor-pointer hover:underline">Prueba de un fetch</a>
+      <a id="navigateIntro" class="bg-[#AB966F] bg-opacity-20 rounded-md text-[#AB966F] p-[6px] cursor-pointer hover:underline" href="#Intro">Inicio</a>
+      <a id="navigateEndpoint" class="bg-[#AB966F] bg-opacity-20 rounded-md text-[#AB966F] p-[6px] cursor-pointer hover:underline" href="#Endpoint">Endpoint y Datos</a>
+      <a class="bg-[#AB966F] bg-opacity-20 rounded-md text-[#AB966F] p-[6px] cursor-pointer hover:underline" href="/mock">Prueba de un fetch</a>
     </li>
   </ul>
 </header>
+
+<script>
+  let pathname = window.location.pathname
+  const navigateIntro = document.getElementById('navigateIntro')
+  const navigateEndpoint = document.getElementById('navigateEndpoint')
+
+  if (pathname === '/mock') {
+    navigateIntro.setAttribute('href', '/')
+  } else {
+    navigateIntro.setAttribute('href', '#Intro')
+  }
+
+  const handleTransition = (event, button) => {
+    event.preventDefault()
+    const targetId = button.getAttribute('href')
+    const targetElement = document.querySelector(targetId)
+    if (targetElement instanceof HTMLElement) {
+      window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' })
+    }
+  }
+  navigateIntro.addEventListener('click', () => {
+    pathname = window.location.pathname
+    if (pathname === '/mock') {
+      navigateIntro.setAttribute('href', '/')
+    } else {
+      navigateIntro.setAttribute('href', '#Intro')
+      handleTransition(event, navigateIntro)
+    }
+  })
+  navigateEndpoint.addEventListener('click', () => {
+    if (pathname === '/mock') {
+    navigateEndpoint.setAttribute('href', '/')
+  } else {
+    navigateEndpoint.setAttribute('href', '#Endpoint')
+    handleTransition(event, navigateEndpoint)
+  }
+  })
+</script>

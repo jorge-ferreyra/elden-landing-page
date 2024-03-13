@@ -21,8 +21,9 @@
       iconLeft.style.translate = '20px 0'
       iconLeft.style.opacity = '1'
 
-      main.style.paddingLeft = '400px'
-
+      if(window.location.pathname === '/') {
+        main.style.paddingLeft = '400px'
+      }
       navBarOpen = true
     } else {
       navbar.style.translate = '0 0'
@@ -32,8 +33,9 @@
       iconRight.style.translate = '0 0'
       iconRight.style.opacity = '1'
       
-      main.style.paddingLeft = '100px'
-
+      if(window.location.pathname === '/') {
+        main.style.paddingLeft = '100px'
+      }
       navBarOpen = false
     }
     

@@ -42,7 +42,7 @@ import ExampleCard2 from './ExampleCard2.astro'
     <div class="w-full flex justify-center">
       <button id="button-example" class="bg-[#AB966F] w-[200px] bg-opacity-20 rounded-md p-[10px] transition-all duration-200 ease-in hover:bg-opacity-50 font-bold">Abrir Ejemplos</button>
     </div>
-    <div class="w-full flex justify-center items-center gap-[20px]">
+    <div id="container-examples" class="w-full flex justify-center items-center gap-[20px]">
       <ExampleCard />
       <ExampleCard2 />
     </div>
@@ -59,24 +59,30 @@ import ExampleCard2 from './ExampleCard2.astro'
 <script>
   let isClose = true
   const buttonExample = document.getElementById('button-example')
+  const containerExamples = document.getElementById('container-examples')
   const exampleCard = document.getElementById('example-card')
   const exampleCard2 = document.getElementById('example-card2')
+  containerExamples.style.display = 'none'
   exampleCard.style.visibility = 'hidden'
   exampleCard.style.display = 'none'
   exampleCard2.style.visibility = 'hidden'
   exampleCard2.style.display = 'none'
   buttonExample.addEventListener('click', () => {
     if(isClose) {
+      containerExamples.style.display = 'flex'
       exampleCard.style.visibility = 'visible'
       exampleCard.style.display = 'block'
       exampleCard2.style.visibility = 'visible'
       exampleCard2.style.display = 'flex'
+      buttonExample.textContent = 'Cerrar Ejemplos'
       isClose = false
     } else {
+      containerExamples.style.display = 'none'
       exampleCard.style.visibility = 'hidden'
       exampleCard.style.display = 'none'
       exampleCard2.style.visibility = 'hidden'
       exampleCard2.style.display = 'none'
+      buttonExample.textContent = 'Abrir Ejemplos'
       isClose = true
     }
   })

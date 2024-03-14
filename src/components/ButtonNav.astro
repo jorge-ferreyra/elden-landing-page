@@ -10,7 +10,8 @@
   const iconLeft = document.getElementById('icon-left')
   const iconRight = document.getElementById('icon-right')
 
-  const main = document.getElementById('main-section')
+  const indexMain = document.getElementById('index-main')
+  const mockMain = document.getElementById('mock-main')
 
   buttonNav.addEventListener('click', () => {
     if(!navBarOpen) {
@@ -22,7 +23,9 @@
       iconLeft.style.opacity = '1'
 
       if(window.location.pathname === '/') {
-        main.style.paddingLeft = '400px'
+        indexMain.style.paddingLeft = '400px'
+      } else {
+        mockMain.style.paddingLeft = '400px'
       }
       navBarOpen = true
     } else {
@@ -34,7 +37,9 @@
       iconRight.style.opacity = '1'
       
       if(window.location.pathname === '/') {
-        main.style.paddingLeft = '100px'
+        indexMain.style.paddingLeft = '100px'
+      } else {
+        mockMain.style.paddingLeft = '100px'
       }
       navBarOpen = false
     }

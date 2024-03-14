@@ -3,7 +3,47 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout title="Elden Ring API - Prueba">
-  <main id="mock-main" class="w-full h-[4300px] p-[100px] flex flex-col gap-[40px] items-center">
-
+  <main id="mock-main" class="w-full h-[7500px] p-[100px] flex flex-col gap-[40px] items-center">
+    <ul id="list-bosses" class="w-full h-[7500px] flex flex-col gap-[40px] items-center">
+    </ul>
   </main>
 </Layout>
+
+<script>
+
+  const listBosses = document.getElementById('list-bosses')
+
+  fetch('http://localhost:1234/bosses')
+    .then(res => res.json())
+    .then(data => {
+      const bosses = data.bosses
+      bosses.forEach(boss => {
+        const li = document.createElement('li')
+        const title = document.createElement('h1')
+        const img = document.createElement('img')
+
+        li.style.background = '#AB966F44'
+        li.style.width = '100%'
+        li.style.maxHeight = '400px'
+        li.style.minHeight = '400px'
+        li.style.padding = '10px'
+        li.style.display = 'flex'
+        li.style.justifyContent = 'space-between'
+
+        title.textContent = boss.name
+        title.style.height = 'fit-content'
+        title.style.color = '#AB966F'
+        title.style.fontSize = '30px'
+        title.style.fontWeight = 'bold'
+        title.style.borderBottom = '1px solid #AB966F'
+
+        img.src = boss.image
+        img.style.maxWidth = '600px'
+        img.style.height = 'auto'
+
+        listBosses.appendChild(li)
+        li.appendChild(title)
+        li.appendChild(img)
+      })
+    })
+</script>

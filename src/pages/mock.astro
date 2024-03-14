@@ -20,6 +20,8 @@ import Layout from '../layouts/Layout.astro'
       bosses.forEach(boss => {
         const li = document.createElement('li')
 
+        const infoBoss = document.createElement('article')
+
         const header = document.createElement('header')
         const subHeader = document.createElement('div')
         const name = document.createElement('h1')
@@ -30,33 +32,81 @@ import Layout from '../layouts/Layout.astro'
 
         const img = document.createElement('img')
 
+        const stats = document.createElement('ul')
+        const mainStats = document.createElement('li')
+        const listStats = document.createElement('ul')
+
+        const health = document.createElement('li')
+        const spanHealth = document.createElement('span')
+        const pHealth = document.createElement('p')
+
+        const defense = document.createElement('li')
+        const spanDefense = document.createElement('span')
+        const pDefense = document.createElement('p')
+
+        const stance = document.createElement('li')
+        const spanStance = document.createElement('span')
+        const pStance = document.createElement('p')
+
+        const parryable = document.createElement('li')
+        const spanParry = document.createElement('span')
+        const pParry = document.createElement('p')
+
+        const damage = document.createElement('li')
+        const spanDamage = document.createElement('span')
+        const pDamage = document.createElement('p')
+
+        spanHealth.textContent = 'Vida:'
+        spanDefense.textContent = 'Defensa: '
+        spanStance.textContent = 'Postura: '
+        spanParry.textContent = 'Parryable: '
+        spanDamage.textContent = 'Daño: '
+
         li.className = 'boss-card'
-
+        infoBoss.className = 'information-boss'
         header.className = 'title-boss'
-
         subHeader.className = 'subtitle-boss'
-
         name.textContent = boss.name
         name.className = 'name-boss'
-
         tier.textContent = "Tier: " + boss.tier
         tier.className = 'tier-boss'
-
         difficulty.textContent = "Dificultad: " + boss.difficulty + '/10'
         difficulty.className = 'difficulty-boss'
-        
         dropRunes.textContent = "Runas: " + boss.dropRunes
         dropRunes.className = 'runes-boss'
-
-
         svgRunes.src = 'runes.webp'
         svgRunes.className = 'svg-runes'
-
         img.src = boss.image
         img.className = 'image-boss'
 
+        if (boss.tier !== 'A') {
+          stats.className = 'stats-boss'
+          listStats.className = 'list-stats'
+
+          pHealth.textContent = boss.stats.health
+          pDefense.textContent = boss.stats.defense
+          pStance.textContent = boss.stats.stance
+          pParry.textContent = boss.stats.parryable ? 'Si' : 'No'
+          pDamage.textContent = boss.stats.damage
+
+
+          health.appendChild(spanHealth)
+          health.appendChild(pHealth)
+          defense.appendChild(spanDefense)
+          defense.appendChild(pDefense)
+          stance.appendChild(spanStance)
+          stance.appendChild(pStance)
+          parryable.appendChild(spanParry)
+          parryable.appendChild(pParry)
+          damage.appendChild(spanDamage)
+          damage.appendChild(pDamage)
+          damage.style.display = 'flex'
+          damage.style.gap = '5px'
+        }
+
         listBosses.appendChild(li)
-        li.appendChild(header)
+        li.appendChild(infoBoss)
+        infoBoss.appendChild(header)
         header.appendChild(name)
         header.appendChild(subHeader)
         subHeader.appendChild(tier)
@@ -64,6 +114,15 @@ import Layout from '../layouts/Layout.astro'
         subHeader.appendChild(dropRunes)
         dropRunes.appendChild(svgRunes)
         li.appendChild(img)
+
+        infoBoss.appendChild(stats)
+        stats.appendChild(mainStats)
+        mainStats.appendChild(listStats)
+        listStats.appendChild(health)
+        listStats.appendChild(defense)
+        listStats.appendChild(stance)
+        listStats.appendChild(parryable)
+        stats.appendChild(damage)
       })
     })
 </script>
@@ -91,7 +150,7 @@ import Layout from '../layouts/Layout.astro'
 
   .name-boss {
     width: fit-content;
-    color: #AB966F;
+
     font-size: 24px;
     font-weight: bold;
   }
@@ -101,7 +160,6 @@ import Layout from '../layouts/Layout.astro'
   }
 
   .tier-boss, .difficulty-boss, .runes-boss {
-    color: #AB966F;
     font-weight: bold;
   }
 
@@ -119,6 +177,35 @@ import Layout from '../layouts/Layout.astro'
     max-width: 600px;
     min-width: 600px;
     height: 380px;
+  }
+
+  .information-boss {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #AB966F;
+  }
+
+  .stats-boss {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .stats-boss span {
+    font-weight: bold;
+  }
+
+  .list-stats {
+    display: flex;
+    gap: 20px;
+  }
+
+  .list-stats li {
+    display: flex;
+    gap: 5px;
   }
 
   @media (max-width: 1850px) {

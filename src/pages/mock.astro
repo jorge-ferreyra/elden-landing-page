@@ -19,31 +19,134 @@ import Layout from '../layouts/Layout.astro'
       const bosses = data.bosses
       bosses.forEach(boss => {
         const li = document.createElement('li')
-        const title = document.createElement('h1')
+
+        const header = document.createElement('header')
+        const subHeader = document.createElement('div')
+        const name = document.createElement('h1')
+        const tier = document.createElement('p')
+        const difficulty = document.createElement('p')
+        const svgRunes = document.createElement('img')
+        const dropRunes = document.createElement('p')
+
         const img = document.createElement('img')
 
-        li.style.background = '#AB966F44'
-        li.style.width = '100%'
-        li.style.maxHeight = '400px'
-        li.style.minHeight = '400px'
-        li.style.padding = '10px'
-        li.style.display = 'flex'
-        li.style.justifyContent = 'space-between'
+        li.className = 'boss-card'
 
-        title.textContent = boss.name
-        title.style.height = 'fit-content'
-        title.style.color = '#AB966F'
-        title.style.fontSize = '30px'
-        title.style.fontWeight = 'bold'
-        title.style.borderBottom = '1px solid #AB966F'
+        header.className = 'title-boss'
+
+        subHeader.className = 'subtitle-boss'
+
+        name.textContent = boss.name
+        name.className = 'name-boss'
+
+        tier.textContent = "Tier: " + boss.tier
+        tier.className = 'tier-boss'
+
+        difficulty.textContent = "Dificultad: " + boss.difficulty + '/10'
+        difficulty.className = 'difficulty-boss'
+        
+        dropRunes.textContent = "Runas: " + boss.dropRunes
+        dropRunes.className = 'runes-boss'
+
+
+        svgRunes.src = 'runes.webp'
+        svgRunes.className = 'svg-runes'
 
         img.src = boss.image
-        img.style.maxWidth = '600px'
-        img.style.height = 'auto'
+        img.className = 'image-boss'
 
         listBosses.appendChild(li)
-        li.appendChild(title)
+        li.appendChild(header)
+        header.appendChild(name)
+        header.appendChild(subHeader)
+        subHeader.appendChild(tier)
+        subHeader.appendChild(difficulty)
+        subHeader.appendChild(dropRunes)
+        dropRunes.appendChild(svgRunes)
         li.appendChild(img)
       })
     })
+
+  const handleResponsive = width => {
+    const header = document.querySelectorAll<HTMLElement>('.title-boss')
+
+    ///max to min
+    if (width < 1633) {
+      header.forEach(title => {
+        title.style.flexDirection = 'column'
+        title.style.alignItems = 'start'
+      })
+    } 
+    if (width <= 1273 && width > 1000) {
+      header.forEach(title => {
+        const text = document.querySelectorAll('.title-boss h1')
+        
+      })
+    }
+  }
+
+  window.addEventListener('load', () => {
+    const actualWidth = listBosses.getBoundingClientRect().width
+    console.log(actualWidth)
+    handleResponsive(actualWidth)
+  })
+
+  
+
+  window.addEventListener('resize', () => {
+    const actualWidth = listBosses.getBoundingClientRect().width
+    handleResponsive(actualWidth)
+  })
 </script>
+
+<style is:global>
+  .boss-card {
+    width: 100%;
+    max-height: 400px;
+    min-height: 400px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    background: #AB966F44;
+
+    && .title-boss, .subtitle-boss {
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      align-items: end;
+      gap: 20px;
+
+      && .name-boss {
+        width: fit-content;
+        color: #AB966F;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      && .subtitle-boss, .name-boss {
+        border-bottom: 1px solid #AB966F;
+      }
+
+      && .tier-boss, .difficulty-boss, .runes-boss {
+        color: #AB966F;
+        font-weight: bold;
+      }
+
+      && .runes-boss {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        && .svg-runes {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+    && .image-boss {
+      max-width: 600px;
+      min-width: 600px;
+      height: auto;
+    }
+  }
+</style>

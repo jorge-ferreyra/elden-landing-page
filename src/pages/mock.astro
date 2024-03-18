@@ -32,35 +32,74 @@ import Layout from '../layouts/Layout.astro'
 
         const img = document.createElement('img')
 
+        const statsTitle = document.createElement('h2')
+        const negationsTitle = document.createElement('h2')
+
+        statsTitle.className = 'subtitle-stats'
+        negationsTitle.className = 'subtitle-stats'
+
+        statsTitle.textContent = 'Estadisticas bases'
+        negationsTitle.textContent = 'Negación de daños'
+
         const stats = document.createElement('ul')
         const mainStats = document.createElement('li')
         const listStats = document.createElement('ul')
-
         const health = document.createElement('li')
         const spanHealth = document.createElement('span')
-        const pHealth = document.createElement('p')
-
+        const valueHealth = document.createElement('p')
         const defense = document.createElement('li')
         const spanDefense = document.createElement('span')
-        const pDefense = document.createElement('p')
-
+        const valueDefense = document.createElement('p')
         const stance = document.createElement('li')
         const spanStance = document.createElement('span')
-        const pStance = document.createElement('p')
-
+        const valueStance = document.createElement('p')
         const parryable = document.createElement('li')
         const spanParry = document.createElement('span')
-        const pParry = document.createElement('p')
-
+        const valueParry = document.createElement('p')
         const damage = document.createElement('li')
         const spanDamage = document.createElement('span')
-        const pDamage = document.createElement('p')
+        const valueDamage = document.createElement('p')
+
+        const negations = document.createElement('ul')
+        const standard = document.createElement('li')
+        const spanStandard = document.createElement('span')
+        const valueStandard = document.createElement('p')
+        const slash = document.createElement('li')
+        const spanSlash = document.createElement('span')
+        const valueSlash = document.createElement('p')
+        const strike = document.createElement('li')
+        const spanStrike = document.createElement('span')
+        const valueStrike = document.createElement('p')
+        const pierce = document.createElement('li')
+        const spanPierce = document.createElement('span')
+        const valuePierce = document.createElement('p')
+        const magic = document.createElement('li')
+        const spanMagic = document.createElement('span')
+        const valueMagic = document.createElement('p')
+        const fire = document.createElement('li')
+        const spanFire = document.createElement('span')
+        const valueFire = document.createElement('p')
+        const lightning = document.createElement('li')
+        const spanLightning = document.createElement('span')
+        const valueLightning = document.createElement('p')
+        const holy = document.createElement('li')
+        const spanHoly = document.createElement('span')
+        const valueHoly = document.createElement('p')
 
         spanHealth.textContent = 'Vida:'
         spanDefense.textContent = 'Defensa: '
         spanStance.textContent = 'Postura: '
         spanParry.textContent = 'Parryable: '
         spanDamage.textContent = 'Daño: '
+
+        spanStandard.textContent = 'Estándar: '
+        spanSlash.textContent = 'Cortante: '
+        spanStrike.textContent = 'Contundente: '
+        spanPierce.textContent = 'Perforante: '
+        spanMagic.textContent = 'Mágico: '
+        spanFire.textContent = 'Fuego: '
+        spanLightning.textContent = 'Rayo: '
+        spanHoly.textContent = 'Santo: '
 
         li.className = 'boss-card'
         infoBoss.className = 'information-boss'
@@ -82,26 +121,53 @@ import Layout from '../layouts/Layout.astro'
         if (boss.tier !== 'A') {
           stats.className = 'stats-boss'
           listStats.className = 'list-stats'
+          negations.className = 'negations-boss'
 
-          pHealth.textContent = boss.stats.health
-          pDefense.textContent = boss.stats.defense
-          pStance.textContent = boss.stats.stance
-          pParry.textContent = boss.stats.parryable ? 'Si' : 'No'
-          pDamage.textContent = boss.stats.damage
+          valueHealth.textContent = boss.stats.health
+          valueDefense.textContent = boss.stats.defense
+          valueStance.textContent = boss.stats.stance
+          valueParry.textContent = boss.stats.parryable ? 'Si' : 'No'
+          valueDamage.textContent = boss.stats.damage
+
+          valueStandard.textContent = boss.stats.negations.standard
+          valueSlash.textContent = boss.stats.negations.slash
+          valueStrike.textContent = boss.stats.negations.strike
+          valuePierce.textContent = boss.stats.negations.pierce
+          valueMagic.textContent = boss.stats.negations.magic
+          valueFire.textContent = boss.stats.negations.fire
+          valueLightning.textContent = boss.stats.negations.lightning
+          valueHoly.textContent = boss.stats.negations.holy
 
 
           health.appendChild(spanHealth)
-          health.appendChild(pHealth)
+          health.appendChild(valueHealth)
           defense.appendChild(spanDefense)
-          defense.appendChild(pDefense)
+          defense.appendChild(valueDefense)
           stance.appendChild(spanStance)
-          stance.appendChild(pStance)
+          stance.appendChild(valueStance)
           parryable.appendChild(spanParry)
-          parryable.appendChild(pParry)
+          parryable.appendChild(valueParry)
           damage.appendChild(spanDamage)
-          damage.appendChild(pDamage)
+          damage.appendChild(valueDamage)
           damage.style.display = 'flex'
           damage.style.gap = '5px'
+
+          standard.appendChild(spanStandard)
+          standard.appendChild(valueStandard)
+          slash.appendChild(spanSlash)
+          slash.appendChild(valueSlash)
+          strike.appendChild(spanStrike)
+          strike.appendChild(valueStrike)
+          pierce.appendChild(spanPierce)
+          pierce.appendChild(valuePierce)
+          magic.appendChild(spanMagic)
+          magic.appendChild(valueMagic)
+          fire.appendChild(spanFire)
+          fire.appendChild(valueFire)
+          lightning.appendChild(spanLightning)
+          lightning.appendChild(valueLightning)
+          holy.appendChild(spanHoly)
+          holy.appendChild(valueHoly)
         }
 
         listBosses.appendChild(li)
@@ -115,6 +181,7 @@ import Layout from '../layouts/Layout.astro'
         dropRunes.appendChild(svgRunes)
         li.appendChild(img)
 
+        infoBoss.appendChild(statsTitle)
         infoBoss.appendChild(stats)
         stats.appendChild(mainStats)
         mainStats.appendChild(listStats)
@@ -123,6 +190,17 @@ import Layout from '../layouts/Layout.astro'
         listStats.appendChild(stance)
         listStats.appendChild(parryable)
         stats.appendChild(damage)
+
+        infoBoss.appendChild(negationsTitle)
+        infoBoss.appendChild(negations)
+        negations.appendChild(standard)
+        negations.appendChild(slash)
+        negations.appendChild(strike)
+        negations.appendChild(pierce)
+        negations.appendChild(magic)
+        negations.appendChild(fire)
+        negations.appendChild(lightning)
+        negations.appendChild(holy)
       })
     })
 </script>
@@ -144,7 +222,7 @@ import Layout from '../layouts/Layout.astro'
     height: fit-content;
     display: flex;
     flex-direction: row;
-    align-items: end;
+    align-items: flex-end;
     gap: 20px;
   }
 
@@ -184,8 +262,15 @@ import Layout from '../layouts/Layout.astro'
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
     color: #AB966F;
+  }
+
+  .subtitle-stats {
+    font-weight: bold;
+    font-size: 20px;
+    width: fit-content;
+    border-bottom: 1px solid #AB966F;
   }
 
   .stats-boss {
@@ -206,6 +291,23 @@ import Layout from '../layouts/Layout.astro'
   .list-stats li {
     display: flex;
     gap: 5px;
+  }
+
+  .negations-boss {
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+  }
+
+  .negations-boss li {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .negations-boss li span {
+    font-weight: bold;
   }
 
   @media (max-width: 1850px) {

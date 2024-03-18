@@ -86,6 +86,24 @@ import Layout from '../layouts/Layout.astro'
         const spanHoly = document.createElement('span')
         const valueHoly = document.createElement('p')
 
+        const svgStandard = document.createElement('img')
+        const svgSlash = document.createElement('img')
+        const svgStrike = document.createElement('img')
+        const svgPierce = document.createElement('img')
+        const svgMagic = document.createElement('img')
+        const svgFire = document.createElement('img')
+        const svgLightning = document.createElement('img')
+        const svgHoly = document.createElement('img')
+
+        svgStandard.src = 'standard.webp'
+        svgSlash.src = 'slash.webp'
+        svgStrike.src = 'strike.webp'
+        svgPierce.src = 'pierce.webp'
+        svgMagic.src = 'magic.webp'
+        svgFire.src = 'fire.webp'
+        svgLightning.src = 'lightning.webp'
+        svgHoly.src = 'holy.webp'
+
         spanHealth.textContent = 'Vida:'
         spanDefense.textContent = 'Defensa: '
         spanStance.textContent = 'Postura: '
@@ -152,20 +170,28 @@ import Layout from '../layouts/Layout.astro'
           damage.style.display = 'flex'
           damage.style.gap = '5px'
 
+          standard.appendChild(svgStandard)
           standard.appendChild(spanStandard)
           standard.appendChild(valueStandard)
+          slash.appendChild(svgSlash)
           slash.appendChild(spanSlash)
           slash.appendChild(valueSlash)
+          strike.appendChild(svgStrike)
           strike.appendChild(spanStrike)
           strike.appendChild(valueStrike)
+          pierce.appendChild(svgPierce)
           pierce.appendChild(spanPierce)
           pierce.appendChild(valuePierce)
+          magic.appendChild(svgMagic)
           magic.appendChild(spanMagic)
           magic.appendChild(valueMagic)
+          fire.appendChild(svgFire)
           fire.appendChild(spanFire)
           fire.appendChild(valueFire)
+          lightning.appendChild(svgLightning)
           lightning.appendChild(spanLightning)
           lightning.appendChild(valueLightning)
+          holy.appendChild(svgHoly)
           holy.appendChild(spanHoly)
           holy.appendChild(valueHoly)
         }
@@ -304,6 +330,11 @@ import Layout from '../layouts/Layout.astro'
     display: flex;
     align-items: center;
     gap: 5px;
+  }
+
+  .negations-boss li img {
+    width: 25px;
+    height: 25px;
   }
 
   .negations-boss li span {

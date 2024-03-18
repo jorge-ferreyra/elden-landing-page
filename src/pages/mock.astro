@@ -44,6 +44,18 @@ import Layout from '../layouts/Layout.astro'
         negationsTitle.textContent = 'Negación de daños'
         resistancesTitle.textContent = 'Resistencias al daño'
 
+        const titlePhase1 = document.createElement('h2')
+        const titlePhase2 = document.createElement('h2')
+        titlePhase1.className = 'phase-title'
+        titlePhase2.className = 'phase-title'
+
+        const phases = document.createElement('article')
+        phases.className = 'phases-information'
+        const phase1 = document.createElement('div')
+        const phase2 = document.createElement('div') 
+
+        titlePhase1.textContent = 'Fase 1'
+        titlePhase2.textContent = 'Fase 2'
 
         const stats = document.createElement('ul')
         const mainStats = document.createElement('li')
@@ -170,7 +182,11 @@ import Layout from '../layouts/Layout.astro'
         spanMadness.textContent = 'Locura: '
         spanDeathBlight.textContent = 'Plaga de muerte: '
 
-        li.className = 'boss-card'
+        if(boss.tier !== 'A') {
+          li.className = 'boss-card'
+        } else {
+          li.className = 'boss-card-a'
+        }
         infoBoss.className = 'information-boss'
         header.className = 'title-boss'
         subHeader.className = 'subtitle-boss'
@@ -186,6 +202,17 @@ import Layout from '../layouts/Layout.astro'
         svgRunes.className = 'svg-runes'
         img.src = boss.image
         img.className = 'image-boss'
+
+        listBosses.appendChild(li)
+        li.appendChild(infoBoss)
+        infoBoss.appendChild(header)
+        header.appendChild(name)
+        header.appendChild(subHeader)
+        subHeader.appendChild(tier)
+        subHeader.appendChild(difficulty)
+        subHeader.appendChild(dropRunes)
+        dropRunes.appendChild(svgRunes)
+        li.appendChild(img)
 
         if (boss.tier !== 'A') {
           stats.className = 'stats-boss'
@@ -276,49 +303,425 @@ import Layout from '../layouts/Layout.astro'
           deathBlight.appendChild(svgDeathBlight)
           deathBlight.appendChild(spanDeathBlight)
           deathBlight.appendChild(valueDeathBlight)
+
+          infoBoss.appendChild(statsTitle)
+          infoBoss.appendChild(stats)
+          stats.appendChild(mainStats)
+          mainStats.appendChild(listStats)
+          listStats.appendChild(health)
+          listStats.appendChild(defense)
+          listStats.appendChild(stance)
+          listStats.appendChild(parryable)
+          stats.appendChild(damage)
+
+          infoBoss.appendChild(negationsTitle)
+          infoBoss.appendChild(negations)
+          negations.appendChild(standard)
+          negations.appendChild(slash)
+          negations.appendChild(strike)
+          negations.appendChild(pierce)
+          negations.appendChild(magic)
+          negations.appendChild(fire)
+          negations.appendChild(lightning)
+          negations.appendChild(holy)
+
+          infoBoss.appendChild(resistancesTitle)
+          infoBoss.appendChild(resistances)
+          resistances.appendChild(poison)
+          resistances.appendChild(scarletRot)
+          resistances.appendChild(hemorrhage)
+          resistances.appendChild(frostbite)
+          resistances.appendChild(sleep)
+          resistances.appendChild(madness)
+          resistances.appendChild(deathBlight)
+        } else {
+          infoBoss.appendChild(phases)
+          phases.appendChild(phase1)
+          phases.appendChild(phase2)
+          phase1.appendChild(titlePhase1)
+          phase2.appendChild(titlePhase2)
+
+          boss.phases.forEach(phase => {
+            const statsTitle2 = document.createElement('h2')
+            const negationsTitle2 = document.createElement('h2')
+            const resistancesTitle2 = document.createElement('h2')
+            statsTitle2.className = 'subtitle-stats'
+            negationsTitle2.className = 'subtitle-stats'
+            resistancesTitle2.className = 'subtitle-stats'
+            statsTitle2.textContent = 'Estadisticas bases'
+            negationsTitle2.textContent = 'Negación de daños'
+            resistancesTitle2.textContent = 'Resistencias al daño'
+            stats.className = 'stats-boss'
+            listStats.className = 'list-stats'
+            negations.className = 'negations-boss'
+            resistances.className = 'resistances-boss'
+            if(phase.phase === 1){
+              valueHealth.textContent = phase.stats.health
+              valueDefense.textContent = phase.stats.defense
+              valueStance.textContent = phase.stats.stance
+              valueParry.textContent = phase.stats.parryable ? 'Si' : 'No'
+              valueDamage.textContent = phase.stats.damage
+
+              valueStandard.textContent = phase.stats.negations.standard
+              valueSlash.textContent = phase.stats.negations.slash
+              valueStrike.textContent = phase.stats.negations.strike
+              valuePierce.textContent = phase.stats.negations.pierce
+              valueMagic.textContent = phase.stats.negations.magic
+              valueFire.textContent = phase.stats.negations.fire
+              valueLightning.textContent = phase.stats.negations.lightning
+              valueHoly.textContent = phase.stats.negations.holy
+
+              valuePoison.textContent = phase.stats.resistances.poison
+              valueScarletRot.textContent = phase.stats.resistances.scarletRot
+              valueHemorrhage.textContent = phase.stats.resistances.hemorrhage
+              valueFrostbite.textContent = phase.stats.resistances.frostbite
+              valueSleep.textContent = phase.stats.resistances.sleep
+              valueMadness.textContent = phase.stats.resistances.madness
+              valueDeathBlight.textContent = phase.stats.resistances.deathBlight
+
+
+              health.appendChild(spanHealth)
+              health.appendChild(valueHealth)
+              defense.appendChild(spanDefense)
+              defense.appendChild(valueDefense)
+              stance.appendChild(spanStance)
+              stance.appendChild(valueStance)
+              parryable.appendChild(spanParry)
+              parryable.appendChild(valueParry)
+              damage.appendChild(spanDamage)
+              damage.appendChild(valueDamage)
+              damage.style.display = 'flex'
+              damage.style.gap = '5px'
+
+              standard.appendChild(svgStandard)
+              standard.appendChild(spanStandard)
+              standard.appendChild(valueStandard)
+              slash.appendChild(svgSlash)
+              slash.appendChild(spanSlash)
+              slash.appendChild(valueSlash)
+              strike.appendChild(svgStrike)
+              strike.appendChild(spanStrike)
+              strike.appendChild(valueStrike)
+              pierce.appendChild(svgPierce)
+              pierce.appendChild(spanPierce)
+              pierce.appendChild(valuePierce)
+              magic.appendChild(svgMagic)
+              magic.appendChild(spanMagic)
+              magic.appendChild(valueMagic)
+              fire.appendChild(svgFire)
+              fire.appendChild(spanFire)
+              fire.appendChild(valueFire)
+              lightning.appendChild(svgLightning)
+              lightning.appendChild(spanLightning)
+              lightning.appendChild(valueLightning)
+              holy.appendChild(svgHoly)
+              holy.appendChild(spanHoly)
+              holy.appendChild(valueHoly)
+
+              poison.appendChild(svgPoison)
+              poison.appendChild(spanPoison)
+              poison.appendChild(valuePoison)
+              scarletRot.appendChild(svgScarletRot)
+              scarletRot.appendChild(spanScarletRot)
+              scarletRot.appendChild(valueScarletRot)
+              hemorrhage.appendChild(svgHemorrhage)
+              hemorrhage.appendChild(spanHemorrhage)
+              hemorrhage.appendChild(valueHemorrhage)
+              frostbite.appendChild(svgFrostbite)
+              frostbite.appendChild(spanFrostbite)
+              frostbite.appendChild(valueFrostbite)
+              sleep.appendChild(svgSleep)
+              sleep.appendChild(spanSleep)
+              sleep.appendChild(valueSleep)
+              madness.appendChild(svgMadness)
+              madness.appendChild(spanMadness)
+              madness.appendChild(valueMadness)
+              deathBlight.appendChild(svgDeathBlight)
+              deathBlight.appendChild(spanDeathBlight)
+              deathBlight.appendChild(valueDeathBlight)
+
+              phase1.appendChild(statsTitle)
+              phase1.appendChild(stats)
+              stats.appendChild(mainStats)
+              mainStats.appendChild(listStats)
+              listStats.appendChild(health)
+              listStats.appendChild(defense)
+              listStats.appendChild(stance)
+              listStats.appendChild(parryable)
+              stats.appendChild(damage)
+
+              phase1.appendChild(negationsTitle)
+              phase1.appendChild(negations)
+              negations.appendChild(standard)
+              negations.appendChild(slash)
+              negations.appendChild(strike)
+              negations.appendChild(pierce)
+              negations.appendChild(magic)
+              negations.appendChild(fire)
+              negations.appendChild(lightning)
+              negations.appendChild(holy)
+
+              phase1.appendChild(resistancesTitle)
+              phase1.appendChild(resistances)
+              resistances.appendChild(poison)
+              resistances.appendChild(scarletRot)
+              resistances.appendChild(hemorrhage)
+              resistances.appendChild(frostbite)
+              resistances.appendChild(sleep)
+              resistances.appendChild(madness)
+              resistances.appendChild(deathBlight)
+            } else if (phase.phase === 2) {
+              const stats2 = document.createElement('ul')
+              const mainStats2 = document.createElement('li')
+              const listStats2 = document.createElement('ul')
+              const health2 = document.createElement('li')
+              const spanHealth2 = document.createElement('span')
+              const valueHealth2 = document.createElement('p')
+              const defense2 = document.createElement('li')
+              const spanDefense2 = document.createElement('span')
+              const valueDefense2 = document.createElement('p')
+              const stance2 = document.createElement('li')
+              const spanStance2 = document.createElement('span')
+              const valueStance2 = document.createElement('p')
+              const parryable2 = document.createElement('li')
+              const spanParry2 = document.createElement('span')
+              const valueParry2 = document.createElement('p')
+              const damage2 = document.createElement('li')
+              const spanDamage2 = document.createElement('span')
+              const valueDamage2 = document.createElement('p')
+
+              const negations2 = document.createElement('ul')
+              const standard2 = document.createElement('li')
+              const spanStandard2 = document.createElement('span')
+              const valueStandard2 = document.createElement('p')
+              const slash2 = document.createElement('li')
+              const spanSlash2 = document.createElement('span')
+              const valueSlash2 = document.createElement('p')
+              const strike2 = document.createElement('li')
+              const spanStrike2 = document.createElement('span')
+              const valueStrike2 = document.createElement('p')
+              const pierce2 = document.createElement('li')
+              const spanPierce2 = document.createElement('span')
+              const valuePierce2 = document.createElement('p')
+              const magic2 = document.createElement('li')
+              const spanMagic2 = document.createElement('span')
+              const valueMagic2 = document.createElement('p')
+              const fire2 = document.createElement('li')
+              const spanFire2 = document.createElement('span')
+              const valueFire2 = document.createElement('p')
+              const lightning2 = document.createElement('li')
+              const spanLightning2 = document.createElement('span')
+              const valueLightning2 = document.createElement('p')
+              const holy2 = document.createElement('li')
+              const spanHoly2 = document.createElement('span')
+              const valueHoly2 = document.createElement('p')
+
+              const svgStandard2 = document.createElement('img')
+              const svgSlash2 = document.createElement('img')
+              const svgStrike2 = document.createElement('img')
+              const svgPierce2 = document.createElement('img')
+              const svgMagic2 = document.createElement('img')
+              const svgFire2 = document.createElement('img')
+              const svgLightning2 = document.createElement('img')
+              const svgHoly2 = document.createElement('img')
+
+              const resistances2 = document.createElement('ul')
+              const poison2 = document.createElement('li')
+              const spanPoison2 = document.createElement('span')
+              const valuePoison2 = document.createElement('p')
+              const scarletRot2 = document.createElement('li')
+              const spanScarletRot2 = document.createElement('span')
+              const valueScarletRot2 = document.createElement('p')
+              const hemorrhage2 = document.createElement('li')
+              const spanHemorrhage2 = document.createElement('span')
+              const valueHemorrhage2 = document.createElement('p')
+              const frostbite2 = document.createElement('li')
+              const spanFrostbite2 = document.createElement('span')
+              const valueFrostbite2 = document.createElement('p')
+              const sleep2 = document.createElement('li')
+              const spanSleep2 = document.createElement('span')
+              const valueSleep2 = document.createElement('p')
+              const madness2 = document.createElement('li')
+              const spanMadness2 = document.createElement('span')
+              const valueMadness2 = document.createElement('p')
+              const deathBlight2 = document.createElement('li')
+              const spanDeathBlight2 = document.createElement('span')
+              const valueDeathBlight2 = document.createElement('p')
+
+              const svgPoison2 = document.createElement('img')
+              const svgScarletRot2 = document.createElement('img')
+              const svgHemorrhage2 = document.createElement('img')
+              const svgFrostbite2 = document.createElement('img')
+              const svgSleep2 = document.createElement('img')
+              const svgMadness2 = document.createElement('img')
+              const svgDeathBlight2 = document.createElement('img')
+
+              stats2.className = 'stats-boss'
+              listStats2.className = 'list-stats'
+              negations2.className = 'negations-boss'
+              resistances2.className = 'resistances-boss'
+
+              svgPoison2.src = 'poison.webp'
+              svgScarletRot2.src = 'scarletRot.webp'
+              svgHemorrhage2.src = 'hemorrhage.webp'
+              svgFrostbite2.src = 'frostbite.webp'
+              svgSleep2.src = 'sleep.webp'
+              svgMadness2.src = 'madness.webp'
+              svgDeathBlight2.src = 'deathBlight.webp'
+
+              svgStandard2.src = 'standard.webp'
+              svgSlash2.src = 'slash.webp'
+              svgStrike2.src = 'strike.webp'
+              svgPierce2.src = 'pierce.webp'
+              svgMagic2.src = 'magic.webp'
+              svgFire2.src = 'fire.webp'
+              svgLightning2.src = 'lightning.webp'
+              svgHoly2.src = 'holy.webp'
+
+              spanHealth2.textContent = 'Vida:'
+              spanDefense2.textContent = 'Defensa: '
+              spanStance2.textContent = 'Postura: '
+              spanParry2.textContent = 'Parryable: '
+              spanDamage2.textContent = 'Daño: '
+
+              spanStandard2.textContent = 'Estándar: '
+              spanSlash2.textContent = 'Cortante: '
+              spanStrike2.textContent = 'Contundente: '
+              spanPierce2.textContent = 'Perforante: '
+              spanMagic2.textContent = 'Mágico: '
+              spanFire2.textContent = 'Fuego: '
+              spanLightning2.textContent = 'Rayo: '
+              spanHoly2.textContent = 'Santo: '
+
+              spanPoison2.textContent = 'Veneno: '
+              spanScarletRot2.textContent = 'Podredumbre Escarlata: '
+              spanHemorrhage2.textContent = 'Hemorragia: '
+              spanFrostbite2.textContent = 'Congelación: '
+              spanSleep2.textContent = 'Sueño: '
+              spanMadness2.textContent = 'Locura: '
+              spanDeathBlight2.textContent = 'Plaga de muerte: '
+              stats2.className = 'stats-boss'
+              listStats2.className = 'list-stats'
+              negations2.className = 'negations-boss'
+              resistances2.className = 'resistances-boss'
+
+              valueHealth2.textContent = phase.stats.health
+              valueDefense2.textContent = phase.stats.defense
+              valueStance2.textContent = phase.stats.stance
+              valueParry2.textContent = phase.stats.parryable ? 'Si' : 'No'
+              valueDamage2.textContent = phase.stats.damage
+
+              valueStandard2.textContent = phase.stats.negations.standard
+              valueSlash2.textContent = phase.stats.negations.slash
+              valueStrike2.textContent = phase.stats.negations.strike
+              valuePierce2.textContent = phase.stats.negations.pierce
+              valueMagic2.textContent = phase.stats.negations.magic
+              valueFire2.textContent = phase.stats.negations.fire
+              valueLightning2.textContent = phase.stats.negations.lightning
+              valueHoly2.textContent = phase.stats.negations.holy
+
+              valuePoison2.textContent = phase.stats.resistances.poison
+              valueScarletRot2.textContent = phase.stats.resistances.scarletRot
+              valueHemorrhage2.textContent = phase.stats.resistances.hemorrhage
+              valueFrostbite2.textContent = phase.stats.resistances.frostbite
+              valueSleep2.textContent = phase.stats.resistances.sleep
+              valueMadness2.textContent = phase.stats.resistances.madness
+              valueDeathBlight2.textContent = phase.stats.resistances.deathBlight
+
+
+              health2.appendChild(spanHealth2)
+              health2.appendChild(valueHealth2)
+              defense2.appendChild(spanDefense2)
+              defense2.appendChild(valueDefense2)
+              stance2.appendChild(spanStance2)
+              stance2.appendChild(valueStance2)
+              parryable2.appendChild(spanParry2)
+              parryable2.appendChild(valueParry2)
+              damage2.appendChild(spanDamage2)
+              damage2.appendChild(valueDamage2)
+              damage2.style.display = 'flex'
+              damage2.style.gap = '5px'
+
+              standard2.appendChild(svgStandard2)
+              standard2.appendChild(spanStandard2)
+              standard2.appendChild(valueStandard2)
+              slash2.appendChild(svgSlash2)
+              slash2.appendChild(spanSlash2)
+              slash2.appendChild(valueSlash2)
+              strike2.appendChild(svgStrike2)
+              strike2.appendChild(spanStrike2)
+              strike2.appendChild(valueStrike2)
+              pierce2.appendChild(svgPierce2)
+              pierce2.appendChild(spanPierce2)
+              pierce2.appendChild(valuePierce2)
+              magic2.appendChild(svgMagic2)
+              magic2.appendChild(spanMagic2)
+              magic2.appendChild(valueMagic2)
+              fire2.appendChild(svgFire2)
+              fire2.appendChild(spanFire2)
+              fire2.appendChild(valueFire2)
+              lightning2.appendChild(svgLightning2)
+              lightning2.appendChild(spanLightning2)
+              lightning2.appendChild(valueLightning2)
+              holy2.appendChild(svgHoly2)
+              holy2.appendChild(spanHoly2)
+              holy2.appendChild(valueHoly2)
+
+              poison2.appendChild(svgPoison2)
+              poison2.appendChild(spanPoison2)
+              poison2.appendChild(valuePoison2)
+              scarletRot2.appendChild(svgScarletRot2)
+              scarletRot2.appendChild(spanScarletRot2)
+              scarletRot2.appendChild(valueScarletRot2)
+              hemorrhage2.appendChild(svgHemorrhage2)
+              hemorrhage2.appendChild(spanHemorrhage2)
+              hemorrhage2.appendChild(valueHemorrhage2)
+              frostbite2.appendChild(svgFrostbite2)
+              frostbite2.appendChild(spanFrostbite2)
+              frostbite2.appendChild(valueFrostbite2)
+              sleep2.appendChild(svgSleep2)
+              sleep2.appendChild(spanSleep2)
+              sleep2.appendChild(valueSleep2)
+              madness2.appendChild(svgMadness2)
+              madness2.appendChild(spanMadness2)
+              madness2.appendChild(valueMadness2)
+              deathBlight2.appendChild(svgDeathBlight2)
+              deathBlight2.appendChild(spanDeathBlight2)
+              deathBlight2.appendChild(valueDeathBlight2)
+
+              phase2.appendChild(statsTitle2)
+              phase2.appendChild(stats2)
+              stats2.appendChild(mainStats2)
+              mainStats2.appendChild(listStats2)
+              listStats2.appendChild(health2)
+              listStats2.appendChild(defense2)
+              listStats2.appendChild(stance2)
+              listStats2.appendChild(parryable2)
+              stats2.appendChild(damage2)
+
+              phase2.appendChild(negationsTitle2)
+              phase2.appendChild(negations2)
+              negations2.appendChild(standard2)
+              negations2.appendChild(slash2)
+              negations2.appendChild(strike2)
+              negations2.appendChild(pierce2)
+              negations2.appendChild(magic2)
+              negations2.appendChild(fire2)
+              negations2.appendChild(lightning2)
+              negations2.appendChild(holy2)
+
+              phase2.appendChild(resistancesTitle2)
+              phase2.appendChild(resistances2)
+              resistances2.appendChild(poison2)
+              resistances2.appendChild(scarletRot2)
+              resistances2.appendChild(hemorrhage2)
+              resistances2.appendChild(frostbite2)
+              resistances2.appendChild(sleep2)
+              resistances2.appendChild(madness2)
+              resistances2.appendChild(deathBlight2)
+            }
+          })
         }
-
-        listBosses.appendChild(li)
-        li.appendChild(infoBoss)
-        infoBoss.appendChild(header)
-        header.appendChild(name)
-        header.appendChild(subHeader)
-        subHeader.appendChild(tier)
-        subHeader.appendChild(difficulty)
-        subHeader.appendChild(dropRunes)
-        dropRunes.appendChild(svgRunes)
-        li.appendChild(img)
-
-        infoBoss.appendChild(statsTitle)
-        infoBoss.appendChild(stats)
-        stats.appendChild(mainStats)
-        mainStats.appendChild(listStats)
-        listStats.appendChild(health)
-        listStats.appendChild(defense)
-        listStats.appendChild(stance)
-        listStats.appendChild(parryable)
-        stats.appendChild(damage)
-
-        infoBoss.appendChild(negationsTitle)
-        infoBoss.appendChild(negations)
-        negations.appendChild(standard)
-        negations.appendChild(slash)
-        negations.appendChild(strike)
-        negations.appendChild(pierce)
-        negations.appendChild(magic)
-        negations.appendChild(fire)
-        negations.appendChild(lightning)
-        negations.appendChild(holy)
-
-        infoBoss.appendChild(resistancesTitle)
-        infoBoss.appendChild(resistances)
-        resistances.appendChild(poison)
-        resistances.appendChild(scarletRot)
-        resistances.appendChild(hemorrhage)
-        resistances.appendChild(frostbite)
-        resistances.appendChild(sleep)
-        resistances.appendChild(madness)
-        resistances.appendChild(deathBlight)
       })
     })
 </script>
@@ -331,6 +734,17 @@ import Layout from '../layouts/Layout.astro'
     padding: 10px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    background: #AB966F44;
+  }
+
+  .boss-card-a {
+    width: 100%;
+    max-height: 1000px;
+    min-height: 1000px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
     align-items: center;
     background: #AB966F44;
   }
@@ -380,8 +794,26 @@ import Layout from '../layouts/Layout.astro'
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 15px;
     color: #AB966F;
+  }
+
+  .phases-information {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .phases-information div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .phase-title {
+    font-weight: bold;
+    font-size: 30px;
   }
 
   .subtitle-stats {

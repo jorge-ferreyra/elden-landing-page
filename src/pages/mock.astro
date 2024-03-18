@@ -34,12 +34,16 @@ import Layout from '../layouts/Layout.astro'
 
         const statsTitle = document.createElement('h2')
         const negationsTitle = document.createElement('h2')
+        const resistancesTitle = document.createElement('h2')
 
         statsTitle.className = 'subtitle-stats'
         negationsTitle.className = 'subtitle-stats'
+        resistancesTitle.className = 'subtitle-stats'
 
         statsTitle.textContent = 'Estadisticas bases'
         negationsTitle.textContent = 'Negación de daños'
+        resistancesTitle.textContent = 'Resistencias al daño'
+
 
         const stats = document.createElement('ul')
         const mainStats = document.createElement('li')
@@ -95,6 +99,29 @@ import Layout from '../layouts/Layout.astro'
         const svgLightning = document.createElement('img')
         const svgHoly = document.createElement('img')
 
+        const resistances = document.createElement('ul')
+        const poison = document.createElement('li')
+        const spanPoison = document.createElement('span')
+        const valuePoison = document.createElement('p')
+        const scarletRot = document.createElement('li')
+        const spanScarletRot = document.createElement('span')
+        const valueScarletRot = document.createElement('p')
+        const hemorrhage = document.createElement('li')
+        const spanHemorrhage = document.createElement('span')
+        const valueHemorrhage = document.createElement('p')
+        const frostbite = document.createElement('li')
+        const spanFrostbite = document.createElement('span')
+        const valueFrostbite = document.createElement('p')
+        const sleep = document.createElement('li')
+        const spanSleep = document.createElement('span')
+        const valueSleep = document.createElement('p')
+        const madness = document.createElement('li')
+        const spanMadness = document.createElement('span')
+        const valueMadness = document.createElement('p')
+        const deathBlight = document.createElement('li')
+        const spanDeathBlight = document.createElement('span')
+        const valueDeathBlight = document.createElement('p')
+
         svgStandard.src = 'standard.webp'
         svgSlash.src = 'slash.webp'
         svgStrike.src = 'strike.webp'
@@ -119,6 +146,14 @@ import Layout from '../layouts/Layout.astro'
         spanLightning.textContent = 'Rayo: '
         spanHoly.textContent = 'Santo: '
 
+        spanPoison.textContent = 'Veneno: '
+        spanScarletRot.textContent = 'Podredumbre Escarlata: '
+        spanHemorrhage.textContent = 'Hemorragia: '
+        spanFrostbite.textContent = 'Congelación: '
+        spanSleep.textContent = 'Sueño: '
+        spanMadness.textContent = 'Locura: '
+        spanDeathBlight.textContent = 'Plaga de muerte: '
+
         li.className = 'boss-card'
         infoBoss.className = 'information-boss'
         header.className = 'title-boss'
@@ -140,6 +175,7 @@ import Layout from '../layouts/Layout.astro'
           stats.className = 'stats-boss'
           listStats.className = 'list-stats'
           negations.className = 'negations-boss'
+          resistances.className = 'resistances-boss'
 
           valueHealth.textContent = boss.stats.health
           valueDefense.textContent = boss.stats.defense
@@ -155,6 +191,14 @@ import Layout from '../layouts/Layout.astro'
           valueFire.textContent = boss.stats.negations.fire
           valueLightning.textContent = boss.stats.negations.lightning
           valueHoly.textContent = boss.stats.negations.holy
+
+          valuePoison.textContent = boss.stats.resistances.poison
+          valueScarletRot.textContent = boss.stats.resistances.scarletRot
+          valueHemorrhage.textContent = boss.stats.resistances.hemorrhage
+          valueFrostbite.textContent = boss.stats.resistances.frostbite
+          valueSleep.textContent = boss.stats.resistances.sleep
+          valueMadness.textContent = boss.stats.resistances.madness
+          valueDeathBlight.textContent = boss.stats.resistances.deathBlight
 
 
           health.appendChild(spanHealth)
@@ -194,6 +238,21 @@ import Layout from '../layouts/Layout.astro'
           holy.appendChild(svgHoly)
           holy.appendChild(spanHoly)
           holy.appendChild(valueHoly)
+
+          poison.appendChild(spanPoison)
+          poison.appendChild(valuePoison)
+          scarletRot.appendChild(spanScarletRot)
+          scarletRot.appendChild(valueScarletRot)
+          hemorrhage.appendChild(spanHemorrhage)
+          hemorrhage.appendChild(valueHemorrhage)
+          frostbite.appendChild(spanFrostbite)
+          frostbite.appendChild(valueFrostbite)
+          sleep.appendChild(spanSleep)
+          sleep.appendChild(valueSleep)
+          madness.appendChild(spanMadness)
+          madness.appendChild(valueMadness)
+          deathBlight.appendChild(spanDeathBlight)
+          deathBlight.appendChild(valueDeathBlight)
         }
 
         listBosses.appendChild(li)
@@ -227,6 +286,16 @@ import Layout from '../layouts/Layout.astro'
         negations.appendChild(fire)
         negations.appendChild(lightning)
         negations.appendChild(holy)
+
+        infoBoss.appendChild(resistancesTitle)
+        infoBoss.appendChild(resistances)
+        resistances.appendChild(poison)
+        resistances.appendChild(scarletRot)
+        resistances.appendChild(hemorrhage)
+        resistances.appendChild(frostbite)
+        resistances.appendChild(sleep)
+        resistances.appendChild(madness)
+        resistances.appendChild(deathBlight)
       })
     })
 </script>
@@ -234,8 +303,8 @@ import Layout from '../layouts/Layout.astro'
 <style is:global>
   .boss-card {
     width: 100%;
-    max-height: 400px;
-    min-height: 400px;
+    max-height: 500px;
+    min-height: 500px;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -339,6 +408,22 @@ import Layout from '../layouts/Layout.astro'
 
   .negations-boss li span {
     font-weight: bold;
+  }
+
+  .resistances-boss {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .resistances-boss li {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .resistances-boss li:nth-child(3) {
+    grid-column-start: span 2;
   }
 
   @media (max-width: 1850px) {

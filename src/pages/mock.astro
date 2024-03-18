@@ -122,6 +122,22 @@ import Layout from '../layouts/Layout.astro'
         const spanDeathBlight = document.createElement('span')
         const valueDeathBlight = document.createElement('p')
 
+        const svgPoison = document.createElement('img')
+        const svgScarletRot = document.createElement('img')
+        const svgHemorrhage = document.createElement('img')
+        const svgFrostbite = document.createElement('img')
+        const svgSleep = document.createElement('img')
+        const svgMadness = document.createElement('img')
+        const svgDeathBlight = document.createElement('img')
+
+        svgPoison.src = 'poison.webp'
+        svgScarletRot.src = 'scarletRot.webp'
+        svgHemorrhage.src = 'hemorrhage.webp'
+        svgFrostbite.src = 'frostbite.webp'
+        svgSleep.src = 'sleep.webp'
+        svgMadness.src = 'madness.webp'
+        svgDeathBlight.src = 'deathBlight.webp'
+
         svgStandard.src = 'standard.webp'
         svgSlash.src = 'slash.webp'
         svgStrike.src = 'strike.webp'
@@ -239,18 +255,25 @@ import Layout from '../layouts/Layout.astro'
           holy.appendChild(spanHoly)
           holy.appendChild(valueHoly)
 
+          poison.appendChild(svgPoison)
           poison.appendChild(spanPoison)
           poison.appendChild(valuePoison)
+          scarletRot.appendChild(svgScarletRot)
           scarletRot.appendChild(spanScarletRot)
           scarletRot.appendChild(valueScarletRot)
+          hemorrhage.appendChild(svgHemorrhage)
           hemorrhage.appendChild(spanHemorrhage)
           hemorrhage.appendChild(valueHemorrhage)
+          frostbite.appendChild(svgFrostbite)
           frostbite.appendChild(spanFrostbite)
           frostbite.appendChild(valueFrostbite)
+          sleep.appendChild(svgSleep)
           sleep.appendChild(spanSleep)
           sleep.appendChild(valueSleep)
+          madness.appendChild(svgMadness)
           madness.appendChild(spanMadness)
           madness.appendChild(valueMadness)
+          deathBlight.appendChild(svgDeathBlight)
           deathBlight.appendChild(spanDeathBlight)
           deathBlight.appendChild(valueDeathBlight)
         }
@@ -412,18 +435,18 @@ import Layout from '../layouts/Layout.astro'
 
   .resistances-boss {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 2fr 2fr 1fr 2fr;
   }
 
   .resistances-boss li {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 5px;
   }
-  
-  .resistances-boss li:nth-child(3) {
-    grid-column-start: span 2;
+
+  .resistances-boss li:nth-child(2) {
+    grid-column-end: span 2;
   }
 
   @media (max-width: 1850px) {

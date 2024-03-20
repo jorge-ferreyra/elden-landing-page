@@ -3,41 +3,57 @@
 ---
 <section id="Intro" class="w-full bg-[#AB966F] bg-opacity-20 border-b-[1px] border-t-[1px] border-[#91805E] flex flex-col justify-center p-[20px] pb-[30px]">
   <header class="flex justify-center pb-[20px]">
-    <h1 class="text-[#91805E] font-bold text-[35px]">FromSoftware</h1>
+    <h1 class="text-[#91805E] font-bold text-[35px]
+    firstq:text-[33px] secondq:text-[31px]">FromSoftware</h1>
   </header>
   <article class="flex flex-col w-full text-white gap-[40px]">
-    <p>
+    <p class="firstq:text-[15px] secondq:text-[14px]">
       FromSoftware es una empresa encargada de desarrollar videojuegos que fue fundamental hace años con su presentación de una saga de videojuegos llamada <a href="" class="text-[#AB966F] hover:underline">Dark Souls</a>,
       con un estilo de combate único entre los demas. Consiste en controlar un personaje que puede atacar con un arma cuerpo a cuerpo, esquivar, curar y bloquear ataques en caso
       de tener escudo. El personaje cuenta con estadisticas principales que se ven visualmente como barras:
     </p>
-    <div class="w-full flex justify-center gap-[40px]">
-      <img title="Estadísticas principales en distintos Souls" class="w-[700px] border-[1px] border-solid border-[#AB966F]" src="hms.webp" alt="">
-      <ul class="h-full flex flex-col justify-center gap-[40px] bg-black bg-opacity-20 p-[20px] rounded-md">
-        <li class="bg-[#AB966F] bg-opacity-20 flex items-center gap-[10px] p-[5px] pr-[10px] rounded-md">
-          <div class="min-w-[110px] h-[50px] pt-[3px] flex justify-center items-center bg-black bg-opacity-40 rounded-md">
-            <h2 class="text-white font-bold text-[20px] ml-[6px] pb-[6px]">Vida</h2>
-            <img title="Vida incrementada" class="ml-[10px]" src="health.webp" alt="">
+    <div class="w-full h-fit flex justify-center items-center gap-[40px]
+    secondq:gap-[20px] thirdq:flex-col">
+      <img title="Estadísticas principales en distintos Souls" class="w-[50%] h-full border-[1px] border-solid border-[#AB966F]
+       thirdq:w-[100%]" src="hms.webp" alt="">
+      <ul class="h-fit w-[50%] flex flex-col justify-center gap-[40px] bg-black bg-opacity-20 p-[20px] rounded-md
+      firstq:p-[20px] firstq:gap-[20px] thirdq:w-[100%]">
+        <li class="bg-[#AB966F] bg-opacity-20 flex items-center gap-[10px] p-[5px] pr-[10px] rounded-md
+        mobile:flex-col mobile:pr-[5px] mobile:gap-[5px] mobile:text-center">
+          <div class="min-w-[110px] h-[50px] pt-[3px] flex justify-center items-center bg-black bg-opacity-40 rounded-md
+          firstq:min-w-[90px] secondq:min-w-[80px]">
+            <h2 class="text-white font-bold text-[20px] ml-[6px] pb-[6px]
+            firstq:text-[18px] secondq:text-[16px]">Vida</h2>
+            <img title="Vida incrementada" class="ml-[10px] firstq:w-[40px] secondq:w-[36px] secondq:ml-[6px]
+            " src="health.webp" alt="">
           </div>
-          <p>Justamente, estadistica que define la vida.</p>
+          <p class="firstq:text-[13px] secondq:text-[11px]">Justamente, estadistica que define la vida máxima.</p>
         </li>
-        <li class="bg-[#AB966F] bg-opacity-20 flex items-center gap-[10px] p-[5px] pr-[10px] rounded-md">
-          <div class="min-w-[120px] h-[50px] pt-[3px] flex justify-center items-center bg-black bg-opacity-40 rounded-md">
-            <h2 class="text-white font-bold text-[20px] ml-[5px] pb-[6px]">Mana</h2>
-            <img title="Mana incrementado" class="ml-[10px]" src="mana.webp" alt="">
+        <li class="bg-[#AB966F] bg-opacity-20 flex items-center gap-[10px] p-[5px] pr-[10px] rounded-md
+        mobile:flex-col mobile:pr-[5px] mobile:gap-[5px] mobile:text-center">
+          <div class="min-w-[120px] h-[50px] pt-[3px] flex justify-center items-center bg-black bg-opacity-40 rounded-md
+          firstq:min-w-[100px] secondq:min-w-[90px]">
+            <h2 class="text-white font-bold text-[20px] ml-[5px] pb-[6px]
+            firstq:text-[18px] secondq:text-[16px]">Mana</h2>
+            <img title="Mana incrementado" class="ml-[10px] firstq:w-[40px] secondq:w-[36px] secondq:ml-[6px]
+            " src="mana.webp" alt="">
           </div>
-          <p>Aparte de las armas cuerpo a cuerpo, se pueden invocar magias, lo cual consume esta estadistica.</p>
+          <p class="firstq:text-[13px] secondq:text-[11px]">Aparte de las armas cuerpo a cuerpo, se pueden invocar magias, lo cual consume esta estadistica.</p>
         </li>
-        <li class="bg-[#AB966F] bg-opacity-20 flex items-center gap-[10px] p-[5px] pr-[10px] rounded-md">
-          <div class="min-w-[150px] h-[50px] pt-[3px] flex justify-center items-center bg-black bg-opacity-40 rounded-md">
-            <h2 class="text-white font-bold text-[20px] ml-[5px] pb-[6px]">Estamina</h2>
-            <img title="Estamina incrementada" class="ml-[10px]" src="stamina.webp" alt="">
+        <li class="bg-[#AB966F] bg-opacity-20 flex items-center gap-[10px] p-[5px] pr-[10px] rounded-md
+        mobile:flex-col mobile:pr-[5px] mobile:gap-[5px] mobile:text-center">
+          <div class="min-w-[150px] h-[50px] pt-[3px] flex justify-center items-center bg-black bg-opacity-40 rounded-md
+          firstq:min-w-[130px] secondq:min-w-[118px]">
+            <h2 class="text-white font-bold text-[20px] ml-[5px] pb-[6px]
+            firstq:text-[18px] secondq:text-[16px]">Estamina</h2>
+            <img title="Estamina incrementada" class="ml-[10px] firstq:w-[40px] secondq:w-[36px] secondq:ml-[6px]
+            " src="stamina.webp" alt="">
           </div>
-          <p>Valor que determina el limite de movimientos, dentro de él se pueden incluir: ataques, bloqueos, correr y esquivar.</p>
+          <p class="firstq:text-[13px] secondq:text-[11px]">Valor que determina el limite de movimientos, dentro de él se pueden incluir: ataques, bloqueos, correr y esquivar.</p>
         </li>
       </ul>
     </div>
-    <p>Realmente <a href="" class="text-[#AB966F] hover:underline">Demon's Souls</a> fue la primera propuesta en donde se presentaba este estilo de juegos, pero Dark Souls fue el que impulso a ser mainstream y a
+    <p class="firstq:text-[15px] secondq:text-[14px]">Realmente <a href="" class="text-[#AB966F] hover:underline">Demon's Souls</a> fue la primera propuesta en donde se presentaba este estilo de juegos, pero Dark Souls fue el que impulso a ser mainstream y a
     catalogar a este tipo de juegos como <a href="" class="text-[#AB966F] hover:underline">Soulslike</a>. <br>
     Básicamente es un subgénero de los videojuegos de rol de acción	y aventura caracterizado por su gran nivel de dificultad y su narrativa indirecta.
     Los mundos expresan un aura de oscuridad medieval y fantasía, en donde la historia se representa exclusivamente en descripciones de objetos, dialogos con NPC's y entornos. 

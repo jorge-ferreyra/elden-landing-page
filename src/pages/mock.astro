@@ -844,15 +844,17 @@ import Layout from '../layouts/Layout.astro'
   }
 
   .negations-boss {
-    width: 50%;
+    width: 80%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(100px, 200px));
     gap: 5px;
   }
 
   .negations-boss li {
+    width: fit-content;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     gap: 5px;
   }
 

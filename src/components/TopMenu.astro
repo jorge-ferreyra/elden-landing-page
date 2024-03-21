@@ -26,9 +26,24 @@ import ButtonNav from './ButtonNav.astro'
   let pathname = window.location.pathname
   const navigateEndpoint = document.getElementById('navigateEndpoint')
   const navigateAbout = document.getElementById('navigateAbout')
+
+
   let fromMock = localStorage.getItem('fromMock')
+  if(fromMock === null || fromMock === undefined) {
+    fromMock = 'false'
+    localStorage.setItem('fromMock', fromMock)
+  }
   let checkEndpoint = localStorage.getItem('checkEndpoint')
+  if(checkEndpoint === null || checkEndpoint === undefined) {
+    checkEndpoint = 'false'
+    localStorage.setItem('checkEndpoint', checkEndpoint)
+  }
   let checkAbout = localStorage.getItem('checkAbout')
+  if(checkAbout === null || checkAbout === undefined) {
+    checkAbout = 'false'
+    localStorage.setItem('checkEndpoint', checkAbout)
+  }
+  
 
   const handleTransition = (event, button) => {
     event.preventDefault()
@@ -69,6 +84,4 @@ import ButtonNav from './ButtonNav.astro'
       localStorage.setItem('fromMock', 'false')
     }
   })
-
-
 </script>

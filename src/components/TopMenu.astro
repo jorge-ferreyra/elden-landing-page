@@ -27,11 +27,15 @@ import ButtonNav from './ButtonNav.astro'
   const navigateEndpoint = document.getElementById('navigateEndpoint')
   const navigateAbout = document.getElementById('navigateAbout')
 
-
   let fromMock = localStorage.getItem('fromMock')
   if(fromMock === null || fromMock === undefined) {
     fromMock = 'false'
     localStorage.setItem('fromMock', fromMock)
+  }
+  let fromGlossary = localStorage.getItem('fromGlossary')
+  if (fromGlossary === null || fromMock === undefined) {
+    fromGlossary = 'false'
+    localStorage.setItem('fromGlossary', fromGlossary)
   }
   let checkEndpoint = localStorage.getItem('checkEndpoint')
   if(checkEndpoint === null || checkEndpoint === undefined) {
@@ -59,6 +63,10 @@ import ButtonNav from './ButtonNav.astro'
       localStorage.setItem('fromMock', 'true')
       localStorage.setItem('checkEndpoint', 'true')
       window.location.href = '/'
+    } else if (pathname === '/glossary') {
+      localStorage.setItem('fromGlossary', 'true')
+      localStorage.setItem('checkEndpoint', 'true')
+      window.location.href = '/'
     } else {
       handleTransition(event, navigateEndpoint)
     }
@@ -68,12 +76,16 @@ import ButtonNav from './ButtonNav.astro'
       localStorage.setItem('fromMock', 'true')
       localStorage.setItem('checkAbout', 'true')
       window.location.href = '/'
+    } else if (pathname === '/glossary') {
+      localStorage.setItem('fromGlossary', 'true')
+      localStorage.setItem('checkAbout', 'true')
+      window.location.href = '/'
     } else {
       handleTransition(event, navigateAbout)
     }
   })
   document.addEventListener('DOMContentLoaded', () => {
-    if(fromMock === 'true') {
+    if(fromMock === 'true' || fromGlossary === 'true' ) {
       if(checkEndpoint === 'true') {
         handleTransition(event, navigateEndpoint)
       } else if (checkAbout === 'true') {
@@ -82,6 +94,7 @@ import ButtonNav from './ButtonNav.astro'
       localStorage.setItem('checkEndpoint', 'false')
       localStorage.setItem('checkAbout', 'false')
       localStorage.setItem('fromMock', 'false')
+      localStorage.setItem('fromGlossary', 'false')
     }
   })
 </script>

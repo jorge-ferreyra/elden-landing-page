@@ -17,7 +17,7 @@ import ButtonNav from './ButtonNav.astro'
       <a class="bg-[#AB966F] bg-opacity-20 rounded-md text-[#AB966F] p-[6px] cursor-pointer hover:underline
       thirdq:p-[3px] thirdq:w-fit" href="/mock">Prueba Fetching</a>
       <a id="navigateAbout" class="bg-[#AB966F] bg-opacity-20 rounded-md text-[#AB966F] p-[6px] cursor-pointer hover:underline
-      thirdq:p-[3px] thirdq:w-fit" href="#Intro">Sobre FromSoftware</a>
+      thirdq:p-[3px] thirdq:w-fit" href="#About">Sobre FromSoftware</a>
     </li>
   </ul>
 </header>
@@ -26,12 +26,9 @@ import ButtonNav from './ButtonNav.astro'
   let pathname = window.location.pathname
   const navigateEndpoint = document.getElementById('navigateEndpoint')
   const navigateAbout = document.getElementById('navigateAbout')
-
-  if (pathname === '/mock') {
-    navigateEndpoint.setAttribute('href', '/')
-  } else {
-    navigateEndpoint.setAttribute('href', '#Endpoint')
-  }
+  let fromMock = localStorage.getItem('fromMock')
+  let checkEndpoint = localStorage.getItem('checkEndpoint')
+  let checkAbout = localStorage.getItem('checkAbout')
 
   const handleTransition = (event, button) => {
     event.preventDefault()
@@ -44,18 +41,34 @@ import ButtonNav from './ButtonNav.astro'
   navigateEndpoint.addEventListener('click', () => {
     pathname = window.location.pathname
     if (pathname === '/mock') {
-      navigateEndpoint.setAttribute('href', '/')
+      localStorage.setItem('fromMock', 'true')
+      localStorage.setItem('checkEndpoint', 'true')
+      window.location.href = '/'
     } else {
-      navigateEndpoint.setAttribute('href', '#Endpoint')
       handleTransition(event, navigateEndpoint)
     }
   })
   navigateAbout.addEventListener('click', () => {
     if (pathname === '/mock') {
-    navigateAbout.setAttribute('href', '/')
-  } else {
-    navigateAbout.setAttribute('href', '#About')
-    handleTransition(event, navigateAbout)
-  }
+      localStorage.setItem('fromMock', 'true')
+      localStorage.setItem('checkAbout', 'true')
+      window.location.href = '/'
+    } else {
+      handleTransition(event, navigateAbout)
+    }
   })
+  document.addEventListener('DOMContentLoaded', () => {
+    if(fromMock === 'true') {
+      if(checkEndpoint === 'true') {
+        handleTransition(event, navigateEndpoint)
+      } else if (checkAbout === 'true') {
+        handleTransition(event, navigateAbout)
+      }
+      localStorage.setItem('checkEndpoint', 'false')
+      localStorage.setItem('checkAbout', 'false')
+      localStorage.setItem('fromMock', 'false')
+    }
+  })
+
+
 </script>

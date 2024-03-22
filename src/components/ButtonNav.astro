@@ -9,6 +9,17 @@
   const spanButton = document.getElementById('span-button')
   const iconLeft = document.getElementById('icon-left')
   const iconRight = document.getElementById('icon-right')
+  const parentNavbar = document.getElementById('parent-navbar')
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth <= 856) {
+      parentNavbar.style.width = '100px'
+      spanButton.style.display = 'none'
+    } else {
+      spanButton.style.display = 'block'
+      parentNavbar.style.width = '300px'
+    }
+  })
 
   buttonNav.addEventListener('click', () => {
     if(!navBarOpen) {

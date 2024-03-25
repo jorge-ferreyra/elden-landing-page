@@ -10,39 +10,39 @@
     <details class="w-full pl-[20px] bg-black bg-opacity-20 text-white" open>
       <summary class="cursor-pointer text-[#e6d7bc] hover:underline">Generales</summary>
       <div class="pl-[10px] flex flex-col bg-black bg-opacity-10">
-        <a class="hover:underline anchor-glossary" href="">Dark Souls</a>
-        <a class="hover:underline anchor-glossary" href="">Demon's Souls</a>
-        <a class="hover:underline anchor-glossary" href="">Soulslike</a>
-        <a class="hover:underline anchor-glossary" href="">Hogeras</a>
-        <a class="hover:underline anchor-glossary" href="">Jefes Legendarios</a>
+        <a id="darkSoulsAnchor" class="hover:underline anchor-glossary" href="/glossary">Dark Souls</a>
+        <a id="demonSoulsAnchor" class="hover:underline anchor-glossary" href="/glossary">Demon's Souls</a>
+        <a id="soulslikeAnchor" class="hover:underline anchor-glossary" href="/glossary">Soulslike</a>
+        <a id="hogerasAnchor" class="hover:underline anchor-glossary" href="/glossary">Hogeras</a>
+        <a id="jefesLegendariosAnchor" class="hover:underline anchor-glossary" href="/glossary">Jefes Legendarios</a>
       </div>
     </details>
 
     <details class="w-full bg-black bg-opacity-20 pl-[20px] text-white" open>
       <summary class="cursor-pointer text-[#e6d7bc] hover:underline">Estadisticas</summary>
       <div class="pl-[10px] flex flex-col bg-black bg-opacity-10">
-        <a class="hover:underline anchor-glossary" href="/glossary">Ataque Potenciado</a>
-        <a class="hover:underline anchor-glossary" href="/glossary">Ataque Estándar</a>
-        <a class="hover:underline anchor-glossary" href="/glossary">Ataque Cortante</a>
-        <a class="hover:underline anchor-glossary" href="/glossary">Ataque Contundente</a>
-        <a class="hover:underline anchor-glossary" href="/glossary">Ataque Perforante</a>
-        <a class="hover:underline anchor-glossary" href="/glossary">Daño Mágico</a>
-        <a class="hover:underline anchor-glossary" href="/glossary">Daño de Fuego</a>
-        <a class="hover:underline anchor-glossary" href="/glossary">Daño de Rayo</a>
-        <a class="hover:underline anchor-glossary" href="/glossary">Daño Santo</a>
-        <a class="hover:underline anchor-glossary" href="/glossary">Postura</a>
-        <a class="hover:underline anchor-glossary" href="/glossary">Parryable</a>
-        <a class="hover:underline anchor-glossary" href="/glossary">Negación de Daño</a>
+        <a id="ataquePotenciadoAnchor" class="hover:underline anchor-glossary" href="/glossary">Ataque Potenciado</a>
+        <a id="ataqueEstandarAnchor" class="hover:underline anchor-glossary" href="/glossary">Ataque Estándar</a>
+        <a id="ataqueCortanteAnchor" class="hover:underline anchor-glossary" href="/glossary">Ataque Cortante</a>
+        <a id="ataqueContundenteAnchor" class="hover:underline anchor-glossary" href="/glossary">Ataque Contundente</a>
+        <a id="ataquePerforanteAnchor" class="hover:underline anchor-glossary" href="/glossary">Ataque Perforante</a>
+        <a id="dañoMagicoAnchor" class="hover:underline anchor-glossary" href="/glossary">Daño Mágico</a>
+        <a id="dañoFuegoAnchor" class="hover:underline anchor-glossary" href="/glossary">Daño de Fuego</a>
+        <a id="dañoRayoAnchor" class="hover:underline anchor-glossary" href="/glossary">Daño de Rayo</a>
+        <a id="dañoSantoAnchor" class="hover:underline anchor-glossary" href="/glossary">Daño Santo</a>
+        <a id="posturaAnchor" class="hover:underline anchor-glossary" href="/glossary">Postura</a>
+        <a id="parryableAnchor" class="hover:underline anchor-glossary" href="/glossary">Parryable</a>
+        <a id="negacionesDañoAnchor" class="hover:underline anchor-glossary" href="/glossary">Negación de Daño</a>
         <details>
           <summary class="cursor-pointer text-[#e6d7bc] hover:underline">Resistencias a Efectos de Estado</summary>
           <div class="flex flex-col pl-[10px] bg-black bg-opacity-10">
-            <a class="hover:underline anchor-glossary" href="/glossary">Veneno</a>
-            <a class="hover:underline anchor-glossary" href="/glossary">Podredumbre Escarlata</a>
-            <a class="hover:underline anchor-glossary" href="/glossary">Hemorragia</a>
-            <a class="hover:underline anchor-glossary" href="/glossary">Congelación</a>
-            <a class="hover:underline anchor-glossary" href="/glossary">Sueño</a>
-            <a class="hover:underline anchor-glossary" href="/glossary">Locura</a>
-            <a class="hover:underline anchor-glossary" href="/glossary">Plaga de Muerte</a>
+            <a id="venenoAnchor" class="hover:underline anchor-glossary" href="/glossary">Veneno</a>
+            <a id="podredumbreEscarlataAnchor" class="hover:underline anchor-glossary" href="/glossary">Podredumbre Escarlata</a>
+            <a id="hemorragiaAnchor" class="hover:underline anchor-glossary" href="/glossary">Hemorragia</a>
+            <a id="congelacionAnchor" class="hover:underline anchor-glossary" href="/glossary">Congelación</a>
+            <a id="sueñoAnchor" class="hover:underline anchor-glossary" href="/glossary">Sueño</a>
+            <a id="locuraAnchor" class="hover:underline anchor-glossary" href="/glossary">Locura</a>
+            <a id="plagaMuerteAnchor" class="hover:underline anchor-glossary" href="/glossary">Plaga de Muerte</a>
           </div>
         </details>
       </div>
@@ -51,26 +51,62 @@
 </nav>
 
 <script>
-  let fromGlossary = localStorage.getItem('fromGlossary')
-  if (fromGlossary === null) {
-    fromGlossary = 'false'
-    localStorage.setItem('fromGlossary', fromGlossary)
+  let navbarItemId = localStorage.getItem('navbarItemId')
+import { reference } from "astro:content"
+  if (navbarItemId === null) {
+    navbarItemId = ''
+    localStorage.setItem('navbarItemId', navbarItemId)
+  }
+  let glossaryItemId = localStorage.getItem('glossaryItemId')
+  if (glossaryItemId === null) {
+    glossaryItemId = ''
+    localStorage.setItem('glossaryItemId', glossaryItemId)
+  }
+  let fromRoot = localStorage.getItem('fromRoot')
+  if (fromRoot === null) {
+    fromRoot = 'false'
+    localStorage.setItem('fromRoot', fromRoot)
   }
   const anchorGlossary = document.getElementsByClassName('anchor-glossary')
   const glossaryReference = document.getElementsByClassName('glossary-reference')
   for(let i = 0; i <= anchorGlossary.length - 1; i++) {
     anchorGlossary[i].addEventListener('click', () => {
-      event.preventDefault()
-      if (anchorGlossary[i].textContent === glossaryReference[i].textContent) {
-        let top = (glossaryReference[i] as HTMLElement).offsetTop
-        window.scrollTo({ top:  top - 100, behavior: 'smooth'});
-        (glossaryReference[i] as HTMLElement).style.background = '#AB966F22';
-        setTimeout(() => {
-          (glossaryReference[i] as HTMLElement).style.background = 'transparent';
-        }, 2500)
+      let pathname = window.location.pathname
+      if (pathname === '/') {
+        localStorage.setItem('fromRoot', 'true')
+        localStorage.setItem('navbarItemId', anchorGlossary[i].id)
+        let referenceId = anchorGlossary[i].id.slice(0, -6)
+        localStorage.setItem('glossaryItemId', referenceId)
+        window.location.href = '/glossary'
+      } else {
+        handleScroll(event, anchorGlossary[i].id, glossaryReference[i].id)
       }
     })
-
   }
 
+  const handleScroll = (event, firstListId, secondListId) => {
+    event.preventDefault()
+    const firstElement = document.getElementById(firstListId)
+    console.log(firstElement.textContent)
+    const secondElement = document.getElementById(secondListId)
+    console.log(secondElement)
+    if(firstElement.textContent === secondElement.textContent) {
+      let top = (secondElement as HTMLElement).offsetTop
+      window.scrollTo({ top:  top - 100, behavior: 'smooth'});
+        (secondElement as HTMLElement).style.background = '#AB966F22';
+        setTimeout(() => {
+          (secondElement as HTMLElement).style.background = 'transparent';
+        }, 2500)
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log(window.localStorage)
+    if(fromRoot === 'true') {
+      handleScroll(event, navbarItemId, glossaryItemId)
+    }
+    localStorage.setItem('navbarItemId', '')
+    localStorage.setItem('glossaryItemId', '')
+    localStorage.setItem('fromRoot', 'false')
+  })
 </script>

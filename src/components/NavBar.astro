@@ -52,7 +52,6 @@
 
 <script>
   let navbarItemId = localStorage.getItem('navbarItemId')
-import { reference } from "astro:content"
   if (navbarItemId === null) {
     navbarItemId = ''
     localStorage.setItem('navbarItemId', navbarItemId)
@@ -76,6 +75,7 @@ import { reference } from "astro:content"
         localStorage.setItem('fromRoot', 'true')
         localStorage.setItem('navbarItemId', anchorGlossary[i].id)
         let referenceId = anchorGlossary[i].id.slice(0, -6)
+        console.log(referenceId)
         localStorage.setItem('glossaryItemId', referenceId)
         window.location.href = '/glossary'
       } else {
@@ -87,21 +87,16 @@ import { reference } from "astro:content"
   const handleScroll = (event, firstListId, secondListId) => {
     event.preventDefault()
     const firstElement = document.getElementById(firstListId)
-    console.log(firstElement.textContent)
     const secondElement = document.getElementById(secondListId)
-    console.log(secondElement)
-    if(firstElement.textContent === secondElement.textContent) {
-      let top = (secondElement as HTMLElement).offsetTop
-      window.scrollTo({ top:  top - 100, behavior: 'smooth'});
-        (secondElement as HTMLElement).style.background = '#AB966F22';
-        setTimeout(() => {
-          (secondElement as HTMLElement).style.background = 'transparent';
-        }, 2500)
-    }
+    let top = (secondElement as HTMLElement).offsetTop
+    window.scrollTo({ top:  top - 100, behavior: 'smooth'});
+      (secondElement as HTMLElement).style.background = '#AB966F22';
+      setTimeout(() => {
+        (secondElement as HTMLElement).style.background = 'transparent';
+      }, 2500)
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    console.log(window.localStorage)
     if(fromRoot === 'true') {
       handleScroll(event, navbarItemId, glossaryItemId)
     }

@@ -3,13 +3,8 @@ import ButtonNav from './ButtonNav.astro'
 ---
 
 <header class="w-full h-[80px] fixed top-0 bg-black z-[2] flex items-center">
-  <ul class="w-full h-[40px] flex items-center pr-[300px]
+  <ul class="w-full h-[40px] flex items-center pl-[300px]
   thirdq:pr-[100px]">
-    <li id="parent-navbar" class="p-[8px] w-[300px] h-full flex justify-center">
-      <ButtonNav>
-        <span id="span-button" class="translate-x-[-20px] text-[#AB966F] transition-all duration-500 ease-out">Explorar</sp>
-      </ButtonNav>
-    </li>
     <li class="flex flex-grow justify-center items-center gap-[80px]
     thirdq:gap-[50px]">
       <a id="navigateEndpoint" class="bg-[#AB966F] bg-opacity-20 rounded-md text-[#AB966F] p-[6px] cursor-pointer hover:underline
@@ -18,6 +13,11 @@ import ButtonNav from './ButtonNav.astro'
       thirdq:p-[3px] thirdq:w-fit" href="/mock">Prueba Fetching</a>
       <a id="navigateAbout" class="bg-[#AB966F] bg-opacity-20 rounded-md text-[#AB966F] p-[6px] cursor-pointer hover:underline
       thirdq:p-[3px] thirdq:w-fit" href="#About">Sobre FromSoftware</a>
+    </li>
+        <li id="parent-navbar" class="p-[8px] w-[300px] h-full flex justify-center">
+      <ButtonNav>
+        <span id="span-button" class="translate-x-[-20px] text-[#AB966F] transition-all duration-500 ease-out">Explorar</sp>
+      </ButtonNav>
     </li>
   </ul>
 </header>

@@ -5,8 +5,9 @@ export default {
     screens: {
       firstq: { 'max': '1615px' },
       secondq: { 'max': '1420px' },
-      thirdq: { 'max': '1127px' },
-      fourthq: { 'max': '915px' },
+      thirdq: { 'max': '1230px' },
+      fourthq: { 'max': '917px' },
+      fifthq: { 'max': '740px' },
       mobile: { 'max': '500px' }
     },
     extend: {}

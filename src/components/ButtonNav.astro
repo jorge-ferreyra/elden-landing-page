@@ -17,7 +17,25 @@
       spanButton.style.display = 'none'
     } else {
       spanButton.style.display = 'block'
-      parentNavbar.style.width = '300px'
+      if(window.innerWidth < 1230) {
+        parentNavbar.style.width = '240px'
+      } else {
+        parentNavbar.style.width = '300px'
+      }
+    }
+  })
+
+  window.addEventListener('load', () => {
+    if (window.innerWidth <= 856) {
+      parentNavbar.style.width = '100px'
+      spanButton.style.display = 'none'
+    } else {
+      spanButton.style.display = 'block'
+      if(window.innerWidth < 1230) {
+        parentNavbar.style.width = '240px'
+      } else {
+        parentNavbar.style.width = '300px'
+      }
     }
   })
 
@@ -25,18 +43,37 @@
     if(!navBarOpen) {
       navbar.style.translate = '-300px 0'
       spanButton.style.translate = '20px 0'
-      iconRight.style.translate = '20px 0'
+
+      if(spanButton.style.display === 'none') {
+        iconRight.style.translate = '40px 0'
+      } else {
+        iconRight.style.translate = '20px 0'
+      }
       iconRight.style.opacity = '0'
-      iconLeft.style.translate = '20px 0'
+
+      if(spanButton.style.display === 'none') {
+        iconLeft.style.translate = '40px 0'
+      } else {
+        iconLeft.style.translate = '20px 0'
+      }
       iconLeft.style.opacity = '1'
 
       navBarOpen = true
     } else {
       navbar.style.translate = '0 0'
       spanButton.style.translate = '0 0'
-      iconLeft.style.translate = '0 0'
+      if(spanButton.style.display === 'none') {
+        iconLeft.style.translate = '0 0'
+      } else {
+        iconLeft.style.translate = '0 0'
+      }
       iconLeft.style.opacity = '0'
-      iconRight.style.translate = '0 0'
+
+      if(spanButton.style.display === 'none') {
+        iconRight.style.translate = '0 0'
+      } else {
+        iconRight.style.translate = '0 0'
+      }
       iconRight.style.opacity = '1'
       
       navBarOpen = false

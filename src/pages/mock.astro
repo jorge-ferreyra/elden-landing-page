@@ -31,6 +31,9 @@ import Layout from '../layouts/Layout.astro'
         const dropRunes = document.createElement('p')
 
         const img = document.createElement('img')
+        const img2 = document.createElement('img')
+        const containerImage = document.createElement('div')
+        containerImage.className = 'containerImages'
 
         const statsTitle = document.createElement('h2')
         const negationsTitle = document.createElement('h2')
@@ -202,6 +205,10 @@ import Layout from '../layouts/Layout.astro'
         svgRunes.className = 'svg-runes'
         img.src = boss.image
         img.className = 'image-boss'
+        if(boss.tier === 'A') {
+          img2.src = boss.image2
+          img.className = 'image-boss'
+        }
 
         listBosses.appendChild(li)
         li.appendChild(infoBoss)
@@ -212,7 +219,13 @@ import Layout from '../layouts/Layout.astro'
         subHeader.appendChild(difficulty)
         subHeader.appendChild(dropRunes)
         dropRunes.appendChild(svgRunes)
-        li.appendChild(img)
+        if(boss.tier !== 'A') {
+          li.appendChild(img)
+        } else {
+          li.appendChild(containerImage)
+          containerImage.appendChild(img)
+          containerImage.appendChild(img2)
+        }
 
         if (boss.tier !== 'A') {
           stats.className = 'stats-boss'
@@ -749,6 +762,15 @@ import Layout from '../layouts/Layout.astro'
     background: #AB966F44;
   }
 
+  .containerImages {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    justify-content: center;
+    align-items: center;
+  }
+
   .title-boss, .subtitle-boss {
     width: fit-content;
     height: fit-content;
@@ -795,7 +817,7 @@ import Layout from '../layouts/Layout.astro'
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 15px;
+    gap: 25px;
     color: #AB966F;
   }
 
@@ -808,7 +830,7 @@ import Layout from '../layouts/Layout.astro'
   .phases-information div {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 18px;
   }
 
   .phase-title {
@@ -868,6 +890,7 @@ import Layout from '../layouts/Layout.astro'
   }
 
   .resistances-boss {
+    width: 95%;
     display: grid;
     grid-template-columns: 2fr 2fr 1fr 2fr;
   }

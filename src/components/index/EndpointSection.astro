@@ -11,7 +11,7 @@ import ExampleCard2 from './ExampleCard2.astro'
     <h1 class="text-[#91805E] font-bold text-[35px]">Endpoint</h1>
   </header>
   <article class="flex flex-col w-full text-white gap-[40px]">
-    <p>
+    <p class="firstq:text-[15px] secondq:text-[14px]">
       La API se puede acceder a la url <span class="bg-black bg-opacity-50 p-[5px] rounded-md italic mx-[2px] text-[#AB966F]">http://localhost:1234</span> 
       y su endpoint es <span class="bg-black bg-opacity-50 p-[5px] rounded-md italic mx-[2px] text-[#AB966F]">/bosses</span>. Tambien se puede acceder mediante el id con
       <span class="bg-black bg-opacity-50 p-[5px] rounded-md italic mx-[2px] text-[#AB966F]" >/bosses/:id</span> donde el id alcanza un rango de 0 a 14.
@@ -22,22 +22,26 @@ import ExampleCard2 from './ExampleCard2.astro'
       <BasicDataCard />
       <div class="max-w-[160px] flex flex-col gap-[5px]">
         <h2 class="text-[#AB966F] font-bold text-[20px]">Aclaracion:</h2>
-        <p>
+        <p class="firstq:text-[15px] secondq:text-[14px]">
           "difficulty" es un valor que califica la dificultad del jefe del 1 al 10 y "dropRunes" es la cantidad de runas que gana el jugador al derrotarlo.
         </p>
       </div>
     </div>
-    <p>
+    <p class="firstq:text-[15px] secondq:text-[14px]">
       Los jefes del tier <span class="font-bold text-[#AB966F]">S, B y C</span> comprenden la misma estructura de datos ya que sus estadisticas no son modificadas aún contando con sus otras fases. Pero
       los jefes de tier <span class="font-bold text-[#AB966F]">A</span> si tienen una estructura aparte por su modificacion de estadisticas en ambas fases. Las estadisticas en todos los jefes consiste en
       <span class="font-bold text-[#AB966F]">Estadisticas base, Negaciones de daño y Resistencias de estado</span>:
     </p>
-    <div class="w-full flex justify-center items-center gap-[20px]">
+    <div class="w-full flex justify-center items-center gap-[20px]
+    thirdq:flex-col">
       <StatsCard />
-      <PhaseCard />
-      <div class="max-w-[200px]">
-        <p>Para los jefes de tier <span class="font-bold text-[#AB966F]">A</span>, contienen las mismas estadisticas pero englobadas en un vector que indica la diferencia entre fases.</p>
+      <div class="w-fit flex justify-center items-center gap-[20px]">
+        <PhaseCard />
+        <div class="max-w-[200px]">
+          <p class="firstq:text-[15px] secondq:text-[14px]">Para los jefes de tier <span class="font-bold text-[#AB966F]">A</span>, contienen las mismas estadisticas pero englobadas en un vector que indica la diferencia entre fases.</p>
+        </div>
       </div>
+      
     </div>
     <div class="w-full flex justify-center">
       <button id="button-example" class="bg-[#AB966F] w-[200px] bg-opacity-20 rounded-md p-[10px] transition-all duration-200 ease-in hover:bg-opacity-50 font-bold">Abrir Ejemplos</button>

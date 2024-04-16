@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout title={"Elden Ring API - Prueba"}>
-  <main id="mock-main" class="w-full h-[10260px] p-[100px] flex flex-col gap-[40px] items-center">
+  <main id="mock-main" class="w-full h-fit p-[100px] flex flex-col gap-[40px] items-center">
     <ul id="list-bosses" class="w-full h-fit-content flex flex-col gap-[40px] items-center">
     </ul>
   </main>
@@ -33,7 +33,9 @@ import Layout from '../layouts/Layout.astro'
         const img = document.createElement('img')
         const img2 = document.createElement('img')
         const containerImage = document.createElement('div')
-        containerImage.className = 'containerImages'
+        const containerImages = document.createElement('div')
+        containerImage.className = 'containerImage'
+        containerImages.className = 'containerImages'
 
         const statsTitle = document.createElement('h2')
         const negationsTitle = document.createElement('h2')
@@ -60,6 +62,7 @@ import Layout from '../layouts/Layout.astro'
         titlePhase1.textContent = 'Fase 1'
         titlePhase2.textContent = 'Fase 2'
 
+        const basicStats = document.createElement('div')
         const stats = document.createElement('ul')
         const mainStats = document.createElement('li')
         const listStats = document.createElement('ul')
@@ -79,6 +82,7 @@ import Layout from '../layouts/Layout.astro'
         const spanDamage = document.createElement('span')
         const valueDamage = document.createElement('p')
 
+        const negationsStats = document.createElement('div')
         const negations = document.createElement('ul')
         const standard = document.createElement('li')
         const spanStandard = document.createElement('span')
@@ -114,6 +118,7 @@ import Layout from '../layouts/Layout.astro'
         const svgLightning = document.createElement('img')
         const svgHoly = document.createElement('img')
 
+        const resistancesStats = document.createElement('div')
         const resistances = document.createElement('ul')
         const poison = document.createElement('li')
         const spanPoison = document.createElement('span')
@@ -144,6 +149,10 @@ import Layout from '../layouts/Layout.astro'
         const svgSleep = document.createElement('img')
         const svgMadness = document.createElement('img')
         const svgDeathBlight = document.createElement('img')
+
+        basicStats.className = 'basic-stats'
+        negationsStats.className = 'negations-stats'
+        resistancesStats.className = 'resistances-stats'
 
         svgPoison.src = 'poison.webp'
         svgScarletRot.src = 'scarletRot.webp'
@@ -190,7 +199,11 @@ import Layout from '../layouts/Layout.astro'
         } else {
           li.className = 'boss-card-a'
         }
-        infoBoss.className = 'information-boss'
+        if(boss.tier === 'A') {
+          infoBoss.className = 'information-boss-a'
+        } else {
+          infoBoss.className = 'information-boss'
+        }
         header.className = 'title-boss'
         subHeader.className = 'subtitle-boss'
         name.textContent = boss.name
@@ -207,7 +220,7 @@ import Layout from '../layouts/Layout.astro'
         img.className = 'image-boss'
         if(boss.tier === 'A') {
           img2.src = boss.image2
-          img.className = 'image-boss'
+          img2.className = 'image-boss'
         }
 
         listBosses.appendChild(li)
@@ -219,12 +232,14 @@ import Layout from '../layouts/Layout.astro'
         subHeader.appendChild(difficulty)
         subHeader.appendChild(dropRunes)
         dropRunes.appendChild(svgRunes)
-        if(boss.tier !== 'A') {
-          li.appendChild(img)
+    
+        if (boss.tier === 'A') {
+          infoBoss.appendChild(containerImages)
+          containerImages.appendChild(img)
+          containerImages.appendChild(img2)
         } else {
-          li.appendChild(containerImage)
+          infoBoss.appendChild(containerImage)
           containerImage.appendChild(img)
-          containerImage.appendChild(img2)
         }
 
         if (boss.tier !== 'A') {
@@ -317,8 +332,9 @@ import Layout from '../layouts/Layout.astro'
           deathBlight.appendChild(spanDeathBlight)
           deathBlight.appendChild(valueDeathBlight)
 
-          infoBoss.appendChild(statsTitle)
-          infoBoss.appendChild(stats)
+          infoBoss.appendChild(basicStats)
+          basicStats.appendChild(statsTitle)
+          basicStats.appendChild(stats)
           stats.appendChild(mainStats)
           mainStats.appendChild(listStats)
           listStats.appendChild(health)
@@ -327,8 +343,9 @@ import Layout from '../layouts/Layout.astro'
           listStats.appendChild(parryable)
           stats.appendChild(damage)
 
-          infoBoss.appendChild(negationsTitle)
-          infoBoss.appendChild(negations)
+          infoBoss.appendChild(negationsStats)
+          negationsStats.appendChild(negationsTitle)
+          negationsStats.appendChild(negations)
           negations.appendChild(standard)
           negations.appendChild(slash)
           negations.appendChild(strike)
@@ -338,8 +355,9 @@ import Layout from '../layouts/Layout.astro'
           negations.appendChild(lightning)
           negations.appendChild(holy)
 
-          infoBoss.appendChild(resistancesTitle)
-          infoBoss.appendChild(resistances)
+          infoBoss.appendChild(resistancesStats)
+          resistancesStats.appendChild(resistancesTitle)
+          resistancesStats.appendChild(resistances)
           resistances.appendChild(poison)
           resistances.appendChild(scarletRot)
           resistances.appendChild(hemorrhage)
@@ -348,11 +366,13 @@ import Layout from '../layouts/Layout.astro'
           resistances.appendChild(madness)
           resistances.appendChild(deathBlight)
         } else {
-          infoBoss.appendChild(phases)
-          phases.appendChild(phase1)
-          phases.appendChild(phase2)
+          infoBoss.appendChild(phase1)
+          infoBoss.appendChild(phase2)
           phase1.appendChild(titlePhase1)
           phase2.appendChild(titlePhase2)
+
+          phase1.className = 'phase-one'
+          phase2.className = 'phase-two'
 
           boss.phases.forEach(phase => {
             const statsTitle2 = document.createElement('h2')
@@ -453,8 +473,9 @@ import Layout from '../layouts/Layout.astro'
               deathBlight.appendChild(spanDeathBlight)
               deathBlight.appendChild(valueDeathBlight)
 
-              phase1.appendChild(statsTitle)
-              phase1.appendChild(stats)
+              phase1.appendChild(basicStats)
+              basicStats.appendChild(statsTitle)
+              basicStats.appendChild(stats)
               stats.appendChild(mainStats)
               mainStats.appendChild(listStats)
               listStats.appendChild(health)
@@ -463,8 +484,9 @@ import Layout from '../layouts/Layout.astro'
               listStats.appendChild(parryable)
               stats.appendChild(damage)
 
-              phase1.appendChild(negationsTitle)
-              phase1.appendChild(negations)
+              phase1.appendChild(negationsStats)
+              negationsStats.appendChild(negationsTitle)
+              negationsStats.appendChild(negations)
               negations.appendChild(standard)
               negations.appendChild(slash)
               negations.appendChild(strike)
@@ -474,8 +496,9 @@ import Layout from '../layouts/Layout.astro'
               negations.appendChild(lightning)
               negations.appendChild(holy)
 
-              phase1.appendChild(resistancesTitle)
-              phase1.appendChild(resistances)
+              phase1.appendChild(resistancesStats)
+              resistancesStats.appendChild(resistancesTitle)
+              resistancesStats.appendChild(resistances)
               resistances.appendChild(poison)
               resistances.appendChild(scarletRot)
               resistances.appendChild(hemorrhage)
@@ -484,6 +507,7 @@ import Layout from '../layouts/Layout.astro'
               resistances.appendChild(madness)
               resistances.appendChild(deathBlight)
             } else if (phase.phase === 2) {
+              const basicStats2 = document.createElement('div')
               const stats2 = document.createElement('ul')
               const mainStats2 = document.createElement('li')
               const listStats2 = document.createElement('ul')
@@ -503,6 +527,7 @@ import Layout from '../layouts/Layout.astro'
               const spanDamage2 = document.createElement('span')
               const valueDamage2 = document.createElement('p')
 
+              const negationsStats2 = document.createElement('div')
               const negations2 = document.createElement('ul')
               const standard2 = document.createElement('li')
               const spanStandard2 = document.createElement('span')
@@ -538,6 +563,7 @@ import Layout from '../layouts/Layout.astro'
               const svgLightning2 = document.createElement('img')
               const svgHoly2 = document.createElement('img')
 
+              const resistancesStats2 = document.createElement('div')
               const resistances2 = document.createElement('ul')
               const poison2 = document.createElement('li')
               const spanPoison2 = document.createElement('span')
@@ -568,6 +594,10 @@ import Layout from '../layouts/Layout.astro'
               const svgSleep2 = document.createElement('img')
               const svgMadness2 = document.createElement('img')
               const svgDeathBlight2 = document.createElement('img')
+
+              basicStats2.className = 'basic-stats'
+              negationsStats2.className = 'negations-stats'
+              resistancesStats2.className = 'resistances-stats'
 
               stats2.className = 'stats-boss'
               listStats2.className = 'list-stats'
@@ -702,8 +732,9 @@ import Layout from '../layouts/Layout.astro'
               deathBlight2.appendChild(spanDeathBlight2)
               deathBlight2.appendChild(valueDeathBlight2)
 
-              phase2.appendChild(statsTitle2)
-              phase2.appendChild(stats2)
+              phase2.appendChild(basicStats2)
+              basicStats2.appendChild(statsTitle2)
+              basicStats2.appendChild(stats2)
               stats2.appendChild(mainStats2)
               mainStats2.appendChild(listStats2)
               listStats2.appendChild(health2)
@@ -712,8 +743,9 @@ import Layout from '../layouts/Layout.astro'
               listStats2.appendChild(parryable2)
               stats2.appendChild(damage2)
 
-              phase2.appendChild(negationsTitle2)
-              phase2.appendChild(negations2)
+              phase2.appendChild(negationsStats2)
+              negationsStats2.appendChild(negationsTitle2)
+              negationsStats2.appendChild(negations2)
               negations2.appendChild(standard2)
               negations2.appendChild(slash2)
               negations2.appendChild(strike2)
@@ -723,8 +755,9 @@ import Layout from '../layouts/Layout.astro'
               negations2.appendChild(lightning2)
               negations2.appendChild(holy2)
 
-              phase2.appendChild(resistancesTitle2)
-              phase2.appendChild(resistances2)
+              phase2.appendChild(resistancesStats2)
+              resistancesStats2.appendChild(resistancesTitle2)
+              resistancesStats2.appendChild(resistances2)
               resistances2.appendChild(poison2)
               resistances2.appendChild(scarletRot2)
               resistances2.appendChild(hemorrhage2)
@@ -742,8 +775,8 @@ import Layout from '../layouts/Layout.astro'
 <style is:global>
   .boss-card {
     width: 100%;
-    max-height: 500px;
-    min-height: 500px;
+    max-height: fit-content;
+    min-height: 450px;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -753,7 +786,7 @@ import Layout from '../layouts/Layout.astro'
 
   .boss-card-a {
     width: 100%;
-    max-height: 1000px;
+    max-height: fit-content;
     min-height: 1000px;
     padding: 10px;
     display: flex;
@@ -762,13 +795,31 @@ import Layout from '../layouts/Layout.astro'
     background: #AB966F44;
   }
 
-  .containerImages {
-    width: 50%;
+  .containerImage {
+    grid-column: 2;
+    grid-row: span 4;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 100px;
     justify-content: center;
     align-items: center;
+  }
+
+  .containerImages {
+    grid-column: 2;
+    grid-row: span 3;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image-boss {
+    width: 100%;
+    height: 80%;
   }
 
   .title-boss, .subtitle-boss {
@@ -782,7 +833,6 @@ import Layout from '../layouts/Layout.astro'
 
   .name-boss {
     width: fit-content;
-
     font-size: 24px;
     font-weight: bold;
   }
@@ -805,32 +855,38 @@ import Layout from '../layouts/Layout.astro'
     width: 18px;
     height: 18px;
   }
-  .image-boss {
-    max-width: 600px;
-    min-width: 600px;
-    height: 380px;
-  }
 
   .information-boss {
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 25px;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: 1fr 2fr 2fr 2fr;
     color: #AB966F;
   }
 
-  .phases-information {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
+  .information-boss-a {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: 1fr 4fr 4fr;
+    color: #AB966F;
   }
 
-  .phases-information div {
+  .phase-one {
+    grid-row: 2;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+
+  .phase-two {
+    grid-row: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .phase-title {
@@ -843,6 +899,14 @@ import Layout from '../layouts/Layout.astro'
     font-size: 20px;
     width: fit-content;
     border-bottom: 1px solid #AB966F;
+  }
+
+  .basic-stats {
+    grid-row: 2;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .stats-boss {
@@ -865,8 +929,16 @@ import Layout from '../layouts/Layout.astro'
     gap: 5px;
   }
 
+  .negations-stats {
+    grid-row: 3;
+    width: 760px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
   .negations-boss {
-    width: 80%;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(4, minmax(100px, 200px));
     gap: 5px;
@@ -889,21 +961,24 @@ import Layout from '../layouts/Layout.astro'
     font-weight: bold;
   }
 
+  .resistances-stats {
+    grid-row: 4;
+    width: 760px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
   .resistances-boss {
-    width: 95%;
+    width: 100%;
     display: grid;
-    grid-template-columns: 2fr 2fr 1fr 2fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .resistances-boss li {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 5px;
-  }
-
-  .resistances-boss li:nth-child(2) {
-    grid-column-end: span 2;
   }
 
   @media (max-width: 1850px) {
@@ -913,7 +988,7 @@ import Layout from '../layouts/Layout.astro'
     }
   }
 
-  @media (max-width: 1480px) {
+  @media (max-width: 1600px) {
     .image-boss {
       max-width: 500px;
       min-width: 500px;

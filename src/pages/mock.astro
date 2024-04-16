@@ -142,6 +142,9 @@ import Layout from '../layouts/Layout.astro'
         const spanDeathBlight = document.createElement('span')
         const valueDeathBlight = document.createElement('p')
 
+        const damageGeneral = document.createElement('div')
+        damageGeneral.className = 'damage-general'
+
         const svgPoison = document.createElement('img')
         const svgScarletRot = document.createElement('img')
         const svgHemorrhage = document.createElement('img')
@@ -343,7 +346,9 @@ import Layout from '../layouts/Layout.astro'
           listStats.appendChild(parryable)
           stats.appendChild(damage)
 
-          infoBoss.appendChild(negationsStats)
+
+          infoBoss.appendChild(damageGeneral)
+          damageGeneral.appendChild(negationsStats)
           negationsStats.appendChild(negationsTitle)
           negationsStats.appendChild(negations)
           negations.appendChild(standard)
@@ -355,7 +360,8 @@ import Layout from '../layouts/Layout.astro'
           negations.appendChild(lightning)
           negations.appendChild(holy)
 
-          infoBoss.appendChild(resistancesStats)
+          infoBoss.appendChild(damageGeneral)
+          damageGeneral.appendChild(resistancesStats)
           resistancesStats.appendChild(resistancesTitle)
           resistancesStats.appendChild(resistances)
           resistances.appendChild(poison)
@@ -1062,6 +1068,11 @@ import Layout from '../layouts/Layout.astro'
       grid-template-columns: 300px 380px;
     }
   }
+  @media (max-width: 1226px) {
+    .boss-card:nth-child(5) h1 {
+        font-size: 14px;
+    }
+  }
 
   @media (max-width: 1040px) {
     .boss-card p, .boss-card span {
@@ -1082,19 +1093,6 @@ import Layout from '../layouts/Layout.astro'
   }
 
   @media (max-width: 930px) {
-    .negations-boss {
-      grid-template-columns: 280px 280px;
-      grid-template-rows: 1fr 1fr 1fr 1fr;
-    }
-    .resistances-boss {
-      grid-template-columns: 260px 280px;
-    }
-  }
-
-  @media (max-width: 790px) {
-    .information-boss {
-      position: relative;
-    }
     .boss-card p, .boss-card span {
       font-size: 12px;
     }
@@ -1105,6 +1103,25 @@ import Layout from '../layouts/Layout.astro'
       font-size: 16px;
     }
     .negations-boss {
+      grid-template-columns: 280px 280px;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+    .resistances-boss {
+      grid-template-columns: 260px 280px;
+    }
+  }
+
+  @media (max-width: 791px) {
+    .boss-card p, .boss-card span {
+      font-size: 11px;
+    }
+    .boss-card h1 {
+      font-size: 18px;
+    }
+    .boss-card h2 {
+      font-size: 15px;
+    }
+    .negations-boss {
       grid-template-columns: 280px;
       grid-template-rows: repeat(8, 1fr);
     }
@@ -1112,10 +1129,21 @@ import Layout from '../layouts/Layout.astro'
       grid-template-columns: 300px;
       grid-template-rows: repeat(7, 1fr);
     }
+    .boss-card:nth-child(7) {
+        && .negations-stats {
+        width: 230px;
+      }
+    }
+    .negations-stats {
+      width: 180px;
+    }
     .resistances-stats {
-      position: absolute;
-      bottom: 60px;
-      right: 0;
+      width: 260px;
+    }
+    .damage-general {
+      width: 100%;
+      display: flex;
+      align-items: center;
     }
   }
 </style>

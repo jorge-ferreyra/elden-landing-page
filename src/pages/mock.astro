@@ -798,23 +798,21 @@ import Layout from '../layouts/Layout.astro'
   .containerImage {
     grid-column: 2;
     grid-row: span 4;
-    width: 100%;
+    width: 670px;
     display: flex;
     flex-direction: column;
     gap: 100px;
     justify-content: center;
-    align-items: center;
   }
 
   .containerImages {
     grid-column: 2;
     grid-row: span 3;
-    width: 100%;
+    width: 670px;
     display: flex;
     flex-direction: column;
     gap: 100px;
     justify-content: center;
-    align-items: center;
   }
 
   .image-boss {
@@ -870,7 +868,7 @@ import Layout from '../layouts/Layout.astro'
     height: 100%;
     display: grid;
     grid-template-columns: 3fr 2fr;
-    grid-template-rows: 1fr 4fr 4fr;
+    grid-template-rows: 1fr 7fr 7fr;
     color: #AB966F;
   }
 
@@ -981,18 +979,54 @@ import Layout from '../layouts/Layout.astro'
     gap: 5px;
   }
 
-  @media (max-width: 1850px) {
+  @media (max-width: 1897px) {
     .title-boss {
       flex-direction: column;
       align-items: start;
+      gap: 4px;
+    }
+    .information-boss {
+      grid-template-rows: 80px 1fr 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 1670px) {
+    .containerImage {
+      width: 600px;
+      display: flex;
+      align-items: center;
+    }
+    .image-boss {
+      height: 70%;
     }
   }
 
   @media (max-width: 1600px) {
+    .information-boss {
+      grid-template-columns: 50% 50%;
+      grid-template-rows: 100px 200px 200px;
+    }
+    .containerImage {
+      width: 100%;
+      grid-row: span 2;
+    }
     .image-boss {
-      max-width: 500px;
-      min-width: 500px;
-      height: 316px;
+      height: 100%;
+    }
+    .basic-stats {
+      margin-top: 6cqmin;
+    }
+    .negations-stats {
+      width: 600px;
+      margin-top: 50px;
+    }
+    .resistances-stats {
+      margin-top: 20px;
+      width: 600px;
+      grid-row: 3;
+      grid-column: 2;
     }
   }
+
+  @media (max-width: 1510px)
 </style>

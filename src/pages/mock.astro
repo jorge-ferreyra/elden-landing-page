@@ -803,7 +803,7 @@ import Layout from '../layouts/Layout.astro'
 
   .containerImage {
     grid-column: 2;
-    grid-row: span 4;
+    grid-row: span 3;
     width: 670px;
     display: flex;
     flex-direction: column;
@@ -865,7 +865,7 @@ import Layout from '../layouts/Layout.astro'
     height: 100%;
     display: grid;
     grid-template-columns: 3fr 2fr;
-    grid-template-rows: 1fr 2fr 2fr 2fr;
+    grid-template-rows: 50px 120px 270px;
     color: #AB966F;
   }
 
@@ -933,8 +933,15 @@ import Layout from '../layouts/Layout.astro'
     gap: 5px;
   }
 
-  .negations-stats {
+  .damage-general {
     grid-row: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .negations-stats {
     width: 760px;
     display: flex;
     flex-direction: column;
@@ -966,7 +973,6 @@ import Layout from '../layouts/Layout.astro'
   }
 
   .resistances-stats {
-    grid-row: 4;
     width: 760px;
     display: flex;
     flex-direction: column;

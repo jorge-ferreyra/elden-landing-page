@@ -1014,7 +1014,7 @@ import Layout from '../layouts/Layout.astro'
       height: 100%;
     }
     .basic-stats {
-      margin-top: 6cqmin;
+      margin-top: 60px;
     }
     .negations-stats {
       width: 600px;
@@ -1028,5 +1028,94 @@ import Layout from '../layouts/Layout.astro'
     }
   }
 
-  @media (max-width: 1510px)
+  @media (max-width: 1510px) {
+    .information-boss {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .title-boss {
+      width: 100%;
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 20px;
+    }
+    .containerImage {
+      width: 100%;
+    }
+    .image-boss {
+      width: 80%;
+    }
+    .basic-stats {
+      margin-top: 0;
+    }
+    .negations-stats {
+      width: 820px;
+      margin-top: 0;
+    }
+    .resistances-stats {
+      width: fit-content;
+      margin-top: 0;
+    }
+    .resistances-boss {
+      grid-template-columns: 300px 380px;
+    }
+  }
+
+  @media (max-width: 1040px) {
+    .boss-card p, .boss-card span {
+      font-size: 14px;
+    }
+    .boss-card h1 {
+      font-size: 22px;
+    }
+    .boss-card h2 {
+      font-size: 18px;
+    }
+    .information-boss {
+      gap: 10px;
+    }
+    .negations-stats {
+      width: 750px;
+    }
+  }
+
+  @media (max-width: 930px) {
+    .negations-boss {
+      grid-template-columns: 280px 280px;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+    .resistances-boss {
+      grid-template-columns: 260px 280px;
+    }
+  }
+
+  @media (max-width: 790px) {
+    .information-boss {
+      position: relative;
+    }
+    .boss-card p, .boss-card span {
+      font-size: 12px;
+    }
+    .boss-card h1 {
+      font-size: 20px;
+    }
+    .boss-card h2 {
+      font-size: 16px;
+    }
+    .negations-boss {
+      grid-template-columns: 280px;
+      grid-template-rows: repeat(8, 1fr);
+    }
+    .resistances-boss {
+      grid-template-columns: 300px;
+      grid-template-rows: repeat(7, 1fr);
+    }
+    .resistances-stats {
+      position: absolute;
+      bottom: 60px;
+      right: 0;
+    }
+  }
 </style>

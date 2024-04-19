@@ -210,6 +210,15 @@ import Layout from '../layouts/Layout.astro'
         header.className = 'title-boss'
         subHeader.className = 'subtitle-boss'
         const nameBoss = boss.name
+
+        window.addEventListener('load', () => {
+          if(nameBoss.includes('/') && window.innerWidth <= 1500) {
+            const [parte1, parte2] = nameBoss.split('/')
+            name.innerHTML = `${parte1}<br>${parte2}`
+          } else {
+            name.textContent = nameBoss
+          }
+        })
         window.addEventListener('resize', () => {
           if(nameBoss.includes('/') && window.innerWidth <= 1500) {
             const [parte1, parte2] = nameBoss.split('/')
@@ -218,15 +227,6 @@ import Layout from '../layouts/Layout.astro'
             name.textContent = nameBoss
           }
         })
-        window.addEventListener('load', () => {
-          if(nameBoss.includes(`/`) && window.innerWidth <= 1500) {
-            const [parte1, parte2] = nameBoss.split('/')
-            name.innerHTML = `${parte1}<br>${parte2}`
-          } else {
-            name.textContent = nameBoss
-          }
-        })
-
 
         name.className = 'name-boss'
         tier.textContent = "Tier: " + boss.tier
@@ -1085,6 +1085,10 @@ import Layout from '../layouts/Layout.astro'
       justify-content: center;
       gap: 20px;
     }
+    .list-stats {
+      flex-direction: row;
+      gap: 20px;
+    }
     .containerImage {
       width: 100%;
     }
@@ -1094,9 +1098,16 @@ import Layout from '../layouts/Layout.astro'
     .basic-stats {
       margin-top: 0;
     }
+    .damage-general {
+      flex-direction: column;
+    }
     .negations-stats {
       width: 820px;
       margin-top: 0;
+      margin-right: 0;
+    }
+    .negations-boss {
+      grid-template-columns: repeat(4, minmax(100px, 200px));;
     }
     .resistances-stats {
       width: fit-content;
@@ -1115,6 +1126,9 @@ import Layout from '../layouts/Layout.astro'
   @media (max-width: 1040px) {
     .boss-card p, .boss-card span {
       font-size: 14px;
+    }
+    .image-boss {
+      min-width: 400px;
     }
     .boss-card h1 {
       font-size: 22px;
@@ -1181,7 +1195,31 @@ import Layout from '../layouts/Layout.astro'
     .damage-general {
       width: 100%;
       display: flex;
-      align-items: center;
+      flex-direction: row;
     }
   }
+
+  @media (max-width: 700px) {
+    .damage-general {
+      flex-direction: column;
+    }
+    .svg-runes {
+      width: 12px;
+      height: 12px;
+    }
+    .image-boss {
+      min-width: 200px;
+    }
+    .title-boss {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    .name-boss {
+      text-align: center;
+    }
+  }
+
+  
 </style>

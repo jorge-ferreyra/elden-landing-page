@@ -209,7 +209,25 @@ import Layout from '../layouts/Layout.astro'
         }
         header.className = 'title-boss'
         subHeader.className = 'subtitle-boss'
-        name.textContent = boss.name
+        const nameBoss = boss.name
+        window.addEventListener('resize', () => {
+          if(nameBoss.includes('/') && window.innerWidth <= 1500) {
+            const [parte1, parte2] = nameBoss.split('/')
+            name.innerHTML = `${parte1}<br>${parte2}`
+          } else {
+            name.textContent = nameBoss
+          }
+        })
+        window.addEventListener('load', () => {
+          if(nameBoss.includes(`/`) && window.innerWidth <= 1500) {
+            const [parte1, parte2] = nameBoss.split('/')
+            name.innerHTML = `${parte1}<br>${parte2}`
+          } else {
+            name.textContent = nameBoss
+          }
+        })
+
+
         name.className = 'name-boss'
         tier.textContent = "Tier: " + boss.tier
         tier.className = 'tier-boss'
@@ -782,7 +800,6 @@ import Layout from '../layouts/Layout.astro'
   .boss-card {
     width: 100%;
     max-height: fit-content;
-    min-height: 450px;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -998,7 +1015,7 @@ import Layout from '../layouts/Layout.astro'
       gap: 4px;
     }
     .information-boss {
-      grid-template-rows: 80px 1fr 1fr 1fr;
+    grid-template-rows: 80px 120px 270px;
     }
   }
 
@@ -1016,7 +1033,20 @@ import Layout from '../layouts/Layout.astro'
   @media (max-width: 1600px) {
     .information-boss {
       grid-template-columns: 50% 50%;
-      grid-template-rows: 100px 200px 200px;
+      grid-template-rows: 80px 200px 200px;
+    }
+    .list-stats {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .basic-stats {
+      gap: 10px;
+    }
+    .damage-general {
+      flex-direction: row;
+      width: 100%;
+      grid-column: span 2;
+      justify-content: unset;
     }
     .containerImage {
       width: 100%;
@@ -1025,16 +1055,18 @@ import Layout from '../layouts/Layout.astro'
     .image-boss {
       height: 100%;
     }
-    .basic-stats {
-      margin-top: 60px;
-    }
     .negations-stats {
-      width: 600px;
-      margin-top: 50px;
+      width: 640px;
+      margin-top: 20px;
+      margin-right: 18px;
+    }
+    .negations-boss {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
     }
     .resistances-stats {
       margin-top: 20px;
-      width: 600px;
+      width: 660px;
       grid-row: 3;
       grid-column: 2;
     }

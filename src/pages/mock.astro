@@ -8,7 +8,34 @@ import Layout from '../layouts/Layout.astro'
     <ul id="list-bosses" class="w-full h-fit-content flex flex-col gap-[40px] items-center">
     </ul>
   </main>
+  <a id="arrowNavigate" class="w-[60px] h-[60px] fixed bottom-[20px] right-[20px] border-[1px] border-solid border-[#AB966F]
+  flex invisible opacity-0 justify-center items-center transition-all ease-out duration-500 rounded-lg
+  hover:bg-[#AB966F] hover:bg-opacity-30" href="/mock">
+    <img class="w-[40%] h-[40%]" src="arrow-big-up-lines.svg" alt="">
+  </a>
 </Layout>
+
+<script>
+  const arrowNavigate = document.getElementById('arrowNavigate')
+  let limitScroll = 400
+
+  window.addEventListener('scroll', () => {
+    let scrollPosition = window.scrollY || window.pageXOffset
+
+    if (scrollPosition > limitScroll) {
+      arrowNavigate.style.visibility = 'visible'
+      arrowNavigate.style.opacity = '1'
+    } else {
+      arrowNavigate.style.visibility = 'hidden'
+      arrowNavigate.style.opacity = '0'
+    }
+
+    arrowNavigate.addEventListener('click', (event) => {
+      event.preventDefault()
+      window.scrollTo({ top: 0, behavior: "smooth"})
+    })
+  })
+</script>
 
 <script>
 
@@ -846,6 +873,7 @@ import Layout from '../layouts/Layout.astro'
   .image-boss-a {
     width: 100%;
     height: 80%;
+    border: 1px solid #AB966F;
   }
 
   .title-boss, .subtitle-boss {
